@@ -1,7 +1,13 @@
 from argparse import ArgumentParser
 
-parser = ArgumentParser(description='Mamba Framework')
-parser.add_argument('mode', type=str, help='mode of Mamba tool')
+from initialization.init import initialize_project_directory
+
+
+parser = ArgumentParser(description="Mamba Framework")
+parser.add_argument('mode', type=str, help="mode of Mamba tool")
 
 args = parser.parse_args()
-print(args.mode)
+
+mode = args.mode
+if mode == 'init':
+    initialize_project_directory(Path('.'))
