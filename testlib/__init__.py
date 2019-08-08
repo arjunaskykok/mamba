@@ -9,12 +9,8 @@ from web3 import (
 
 
 @pytest.fixture
-def tester_provider():
-    return EthereumTesterProvider()
-
-@pytest.fixture
-def eth_tester(tester_provider):
-    return tester_provider.ethereum_tester
+def eth_tester():
+    return EthereumTesterProvider().ethereum_tester
 
 def contract(smart_contract_name, current_directory=Path('.')):
     build_contracts_dir = current_directory / Path('build') / Path('contracts')
