@@ -1,27 +1,11 @@
-from pathlib import Path
 from json import loads
 from vyper import __version__ as version
 
 from compilation.vyper_compiler import compile_all_files
+from testlib.test_with_contracts import TestWithContracts
 
 
-class TestCompile():
-
-    tmp_path = Path('/tmp') # TODO: Change this into dynamic temp directory
-
-    def setup_method(self, method):
-        self.fixtures_dir = Path('.') / Path('test') / Path('fixtures')
-        self.build_dir = self.tmp_path / Path('build')
-        self.build_contracts_dir = self.tmp_path / Path('build') / Path('contracts')
-        self.json_compiled_file = self.build_contracts_dir / Path('HelloWorld.json')
-
-        self.build_dir.mkdir()
-        self.build_contracts_dir.mkdir()
-
-    def teardown_method(self, method):
-        self.json_compiled_file.unlink()
-        self.build_contracts_dir.rmdir()
-        self.build_dir.rmdir()
+class TestCompile(TestWithContracts):
 
     def test_compile_vyper_file(self):
         compile_all_files(self.fixtures_dir, self.build_contracts_dir)
