@@ -12,8 +12,8 @@ from web3 import (
 def eth_tester():
     return EthereumTesterProvider().ethereum_tester
 
-def contract(smart_contract_name, current_directory=Path('.')):
-    build_contracts_dir = current_directory / Path('build') / Path('contracts')
+def contract(smart_contract_name, parameters=[], contract_directory=Path('.')):
+    build_contracts_dir = contract_directory / Path('build') / Path('contracts')
     contract_json_file = (build_contracts_dir / smart_contract_name).with_suffix('.json')
 
     with open(contract_json_file, 'r') as smart_contract_build_file:
@@ -22,7 +22,7 @@ def contract(smart_contract_name, current_directory=Path('.')):
         abi = json_object["abi"]
         w3 = Web3(EthereumTesterProvider())
         contract = w3.eth.contract(abi=abi, bytecode=bytecode)
-        tx_hash = contract.constructor().transact()
+        tx_hash = contract.constructor(*parameters).transact()
         tx_receipt = w3.eth.waitForTransactionReceipt(tx_hash)
         contract = w3.eth.contract(abi=abi, address=tx_receipt.contractAddress)
         return contract
