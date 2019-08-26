@@ -1,4 +1,5 @@
 from pathlib import Path
+from shutil import copyfile
 
 
 def initialize_project_directory(current_directory: Path):
@@ -13,5 +14,12 @@ def initialize_project_directory(current_directory: Path):
     test_dir = current_directory / Path('test')
     test_dir.mkdir()
 
-    deployments_dir = current_directory / Path('deployments')
-    deployments_dir.mkdir()
+    migrations_dir = current_directory / Path("migrations")
+    migrations_dir.mkdir()
+
+    deployed_dir = current_directory / Path('deployed')
+    deployed_dir.mkdir()
+
+    settings_sample = Path(__file__).parent / Path("init_files") / Path("settings_sample.py")
+    settings_file = current_directory / Path("settings.py")
+    copyfile(settings_sample, settings_file)

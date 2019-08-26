@@ -3,7 +3,7 @@ from json import dump
 from vyper import compile_codes, __version__ as version
 
 
-def compile_all_files(source_code_directory: Path, build_directory: Path):
+def compile_all_files(source_code_directory: Path, build_directory: Path, migration_directory: Path):
     vyper_files = source_code_directory.glob("*.vy")
     for vyper_file in vyper_files:
         with open(vyper_file, 'r') as f:
@@ -30,3 +30,10 @@ def compile_all_files(source_code_directory: Path, build_directory: Path):
             with open(contract_json_file, 'w') as smart_contract_build_file:
                 dump(smart_contract_json, smart_contract_build_file, indent=4)
 
+            migration_sample = Path(__file__).parent / Path("compiled_files") / Path("migration_sample.py")
+            migration_file_name = f"deploy_{smart_contract_name}.py"
+            migration_file = migration_directory / Path(migration_file_name)
+            with open(migration_file, "w") as file:
+                migration_sample_content = migration_sample.read_text()
+                content = migration_sample_content.format(smart_contract_name=smart_contract_name)
+                file.write(content)

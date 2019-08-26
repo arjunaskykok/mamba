@@ -14,4 +14,4 @@ mode = args.mode
 if mode == 'init':
     initialize_project_directory(Path('.'))
 elif mode == 'compile':
-    compile_all_files(Path('contracts'), Path('build') / Path('contracts'))
+    compile_all_files(Path('contracts'), Path('build') / Path('contracts'), Path("migrations"))

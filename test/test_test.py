@@ -1,8 +1,8 @@
 from pathlib import Path
 import shutil
 
-from testlib import contract, eth_tester
-from testlib.test_with_contracts import TestWithContracts
+from mamba.testlib import contract, eth_tester
+from mamba.testlib.test_with_contracts import TestWithContracts
 
 
 class TestTest(TestWithContracts):
