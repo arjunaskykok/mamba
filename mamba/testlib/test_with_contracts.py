@@ -9,6 +9,7 @@ class TestWithContracts():
         self.fixtures_dir = Path('.') / Path('test') / Path('fixtures')
         self.build_dir = self.tmp_path / Path('build')
         self.migrations_dir = self.tmp_path / Path("migrations")
+        self.decentralized_app_dir = self.tmp_path / Path("decentralized_app")
         self.build_contracts_dir = self.tmp_path / Path('build') / Path('contracts')
         self.json_compiled_fixture = self.fixtures_dir / Path("HelloWorld.json")
         self.json_compiled_file = self.build_contracts_dir / Path('HelloWorld.json')
@@ -23,6 +24,8 @@ class TestWithContracts():
             self.build_contracts_dir.mkdir()
         if not self.migrations_dir.exists():
             self.migrations_dir.mkdir()
+        if not self.decentralized_app_dir.exists():
+            self.decentralized_app_dir.mkdir()
 
     def teardown_method(self, method):
         if self.json_compiled_file.exists():
@@ -39,3 +42,5 @@ class TestWithContracts():
             self.build_dir.rmdir()
         if self.migrations_dir.exists():
             self.migrations_dir.rmdir()
+        if self.decentralized_app_dir.exists():
+            self.decentralized_app_dir.rmdir()

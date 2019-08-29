@@ -28,7 +28,9 @@ class DeployContract:
             server = "http://" + development_network["host"] + ":" + str(development_network["port"])
             self.w3 = Web3(Web3.HTTPProvider(server))
 
-    def contract(self, smart_contract_name : str, build_contracts_directory : Path) -> PropertyCheckingFactory:
+    def contract(self,
+                 smart_contract_name : str,
+                 build_contracts_directory : Path = Path(getcwd()) / Path("build") / Path("contracts")) -> PropertyCheckingFactory:
         contract_json_file = (build_contracts_directory / smart_contract_name).with_suffix('.json')
 
         with open(contract_json_file, "r") as smart_contract_build_file:
@@ -36,6 +38,23 @@ class DeployContract:
             bytecode = json_object["bytecode"]
             abi = json_object["abi"]
             smart_contract = self.w3.eth.contract(abi=abi, bytecode=bytecode)
+            return smart_contract
+
+    def deployed_contract(self,
+                          smart_contract_name : str,
+                          build_contracts_directory : Path = Path(getcwd()) / Path("build") / Path("contracts"),
+                          deployed_contracts_directory : Path = Path(getcwd()) / Path("deployed")) -> PropertyCheckingFactory:
+        prefix_deployed_file = "receipt_"
+        contract_json_file = (build_contracts_directory / smart_contract_name).with_suffix(".json")
+        deployed_name = prefix_deployed_file + smart_contract_name
+        deployed_json_file = (deployed_contracts_directory / deployed_name).with_suffix(".json")
+
+        with open(contract_json_file, "r") as smart_contract_build_file, open(deployed_json_file, "r") as smart_contract_deployed_file:
+            json_object = load(smart_contract_build_file)
+            abi = json_object["abi"]
+            deployed_json_object = load(smart_contract_deployed_file)
+            address = deployed_json_object["contractAddress"]
+            smart_contract = self.w3.eth.contract(abi=abi, address=address)
             return smart_contract
 
     def deploy_contract(self,

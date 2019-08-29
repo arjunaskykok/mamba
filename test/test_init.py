@@ -14,6 +14,7 @@ class TestInit():
         self.test_dir = self.tmp_path / Path('test')
         self.migrations_dir = self.tmp_path / Path("migrations")
         self.deployed_dir = self.tmp_path / Path("deployed")
+        self.decentralized_app_dir = self.tmp_path / Path("decentralized_app")
         self.settings_file = self.tmp_path / Path("settings.py")
 
     def teardown_method(self, method):
@@ -23,6 +24,7 @@ class TestInit():
         self.test_dir.rmdir()
         self.migrations_dir.rmdir()
         self.deployed_dir.rmdir()
+        self.decentralized_app_dir.rmdir()
         self.settings_file.unlink()
 
     def test_initialize_project_directory(self):
@@ -33,4 +35,5 @@ class TestInit():
         assert self.test_dir.exists()
         assert self.migrations_dir.exists()
         assert self.deployed_dir.exists()
+        assert self.decentralized_app_dir.exists()
         assert self.settings_file.exists()

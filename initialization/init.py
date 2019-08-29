@@ -20,6 +20,9 @@ def initialize_project_directory(current_directory: Path):
     deployed_dir = current_directory / Path('deployed')
     deployed_dir.mkdir()
 
+    decentralized_app_dir = current_directory / Path('decentralized_app')
+    decentralized_app_dir.mkdir()
+
     settings_sample = Path(__file__).parent / Path("init_files") / Path("settings_sample.py")
     settings_file = current_directory / Path("settings.py")
     copyfile(settings_sample, settings_file)

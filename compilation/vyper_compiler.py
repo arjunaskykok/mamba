@@ -31,7 +31,8 @@ def compile_all_files(source_code_directory: Path, build_directory: Path, migrat
                 dump(smart_contract_json, smart_contract_build_file, indent=4)
 
             migration_sample = Path(__file__).parent / Path("compiled_files") / Path("migration_sample.py")
-            migration_file_name = f"deploy_{smart_contract_name}.py"
+            prefix_deploy_file = "deploy_"
+            migration_file_name = f"{prefix_deploy_file}{smart_contract_name}.py"
             migration_file = migration_directory / Path(migration_file_name)
             with open(migration_file, "w") as file:
                 migration_sample_content = migration_sample.read_text()
