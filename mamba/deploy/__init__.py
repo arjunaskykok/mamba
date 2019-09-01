@@ -27,6 +27,9 @@ class DeployContract:
         if development_network["mode"]=="HTTP":
             server = "http://" + development_network["host"] + ":" + str(development_network["port"])
             self.w3 = Web3(Web3.HTTPProvider(server))
+        elif development_network["mode"]=="IPC":
+            ipc_url = development_network["url"]
+            self.w3 = Web3(Web3.IPCProvider(ipc_url))
 
     def contract(self,
                  smart_contract_name : str,
@@ -77,6 +80,10 @@ class DeployContract:
         else:
             if transaction_parameters and not transaction_parameters.get("from", None):
                 transaction_parameters["from"] = self.w3.personal.listAccounts[0]
+            if transaction_parameters and not transaction_parameters.get("nonce", None):
+                from_account = transaction_parameters["from"]
+                nonce = self.w3.eth.getTransactionCount(from_account)
+                transaction_parameters["nonce"] = nonce
             tx_hash = smart_contract_constructor.transact(transaction_parameters)
         tx_receipt = self.w3.eth.waitForTransactionReceipt(tx_hash)
         tx_dict = dict(tx_receipt)
