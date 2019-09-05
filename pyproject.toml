@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "mambablack"
+version = "0.1.0"
+description = "Development framework to write, test and deploy smart contracts written in Vyper."
+authors = ["Arjuna Sky Kok <arjuna@mamba.black>"]
+license = "LGPL-3.0"
+readme = "README.md"
+repository = "https://github.com/arjunaskykok/mamba"
+homepage = "https://mamba.black"
+keywords = ["blockchain"]
+classifiers = [
+  "Topic :: Software Development :: Build Tools",
+  "Topic :: Software Development :: Libraries :: Python Modules"
+]
+
+[tool.poetry.dependencies]
+python = "^3.6"
+vyper = "0.1.0b12"
+pytest = "^5.1"
+web3 = "4.7.2"
+eth-tester = "0.1.0b32"
+py-evm = "0.2.0a41"
+
+[tool.poetry.scripts]
+mamba = "mambablack:mamba_cli:parse_cli_args"

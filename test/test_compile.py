@@ -2,7 +2,7 @@ from json import loads
 from vyper import __version__ as version
 
 from compilation.vyper_compiler import compile_all_files
-from mamba.testlib.test_with_contracts import TestWithContracts
+from mambablack.testlib.test_with_contracts import TestWithContracts
 
 
 class TestCompile(TestWithContracts):

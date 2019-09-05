@@ -1,4 +1,4 @@
-from mamba.deploy import DeployContract
+from mambablack.deploy import DeployContract
 
 
 deploy_contract_instance = DeployContract()

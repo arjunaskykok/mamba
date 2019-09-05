@@ -1,8 +1,8 @@
 from argparse import ArgumentParser
 from pathlib import Path
 
-from mamba.initialization.init import initialize_project_directory
-from mamba.compilation.vyper_compiler import compile_all_files
+from mambablack.initialization.init import initialize_project_directory
+from mambablack.compilation.vyper_compiler import compile_all_files
 
 
 def parse_cli_args():
