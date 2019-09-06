@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from initialization.init import initialize_project_directory
+from black_mamba.initialization.init import initialize_project_directory
 
 
 class TestInit():

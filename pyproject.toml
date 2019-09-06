@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "mambablack"
+name = "black-mamba"
 version = "0.1.0"
 description = "Development framework to write, test and deploy smart contracts written in Vyper."
 authors = ["Arjuna Sky Kok <arjuna@mamba.black>"]
@@ -22,4 +22,4 @@ eth-tester = "0.1.0b32"
 py-evm = "0.2.0a41"
 
 [tool.poetry.scripts]
-mamba = "mambablack:mamba_cli:parse_cli_args"
+mamba = "black_mamba:mamba_cli:parse_cli_args"

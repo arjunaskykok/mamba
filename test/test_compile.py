@@ -1,8 +1,8 @@
 from json import loads
 from vyper import __version__ as version
 
-from compilation.vyper_compiler import compile_all_files
-from mambablack.testlib.test_with_contracts import TestWithContracts
+from black_mamba.compilation.vyper_compiler import compile_all_files
+from black_mamba.testlib.test_with_contracts import TestWithContracts
 
 
 class TestCompile(TestWithContracts):
