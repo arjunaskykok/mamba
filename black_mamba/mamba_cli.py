@@ -3,6 +3,7 @@ from pathlib import Path
 
 from black_mamba.initialization.init import initialize_project_directory
 from black_mamba.compilation.vyper_compiler import compile_all_files
+from black_mamba.server.geth_dev_server import run_server
 
 
 def parse_cli_args():
@@ -17,6 +18,8 @@ def parse_cli_args():
         initialize_project_directory(Path('.'))
     elif mode == 'compile':
         compile_all_files(Path('contracts'), Path('build') / Path('contracts'), Path("migrations"))
+    elif mode == "server":
+        run_server(Path("datadir"))
 
 
 if __name__ == "__main__":
