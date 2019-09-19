@@ -10,16 +10,17 @@ def parse_cli_args():
 
     parser = ArgumentParser(description="Mamba Framework")
     parser.add_argument('mode', type=str, help="mode of Mamba tool")
+    parser.add_argument('--httpserver', action="store_true", required=False)
 
-    args = parser.parse_args()
+    arguments = parser.parse_args()
 
-    mode = args.mode
+    mode = arguments.mode
     if mode == 'init':
         initialize_project_directory(Path('.'))
     elif mode == 'compile':
         compile_all_files(Path('contracts'), Path('build') / Path('contracts'), Path("migrations"))
     elif mode == "server":
-        run_server(Path("datadir"))
+        run_server(Path("datadir"), arguments.httpserver)
 
 
 if __name__ == "__main__":
