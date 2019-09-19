@@ -37,7 +37,7 @@ def init_geth_datadir(datadir: Path):
     geth_process.communicate()
 
 def run_dev_server(datadir: Path):
-    geth_process = Popen(["geth", "--datadir", ".", "--mine", "--minerthreads", "1", "--etherbase", "0x3333333333333333333333333333333333333333", "--rpc", "--ws"],
+    geth_process = Popen(["geth", "--networkid", "15", "--datadir", ".", "--mine", "--minerthreads", "1", "--etherbase", "0x3333333333333333333333333333333333333333", "--rpc", "--ws"],
                          cwd=datadir)
     geth_process.communicate()
 
