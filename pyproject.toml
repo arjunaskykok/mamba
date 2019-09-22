@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "black-mamba"
-version = "0.2.0"
+version = "0.2.1"
 description = "Development framework to write, test and deploy smart contracts written in Vyper. It has integrated web3.py support."
 authors = ["Arjuna Sky Kok <arjuna@mamba.black>"]
 license = "LGPL-3.0"
