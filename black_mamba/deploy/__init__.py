@@ -7,6 +7,7 @@ from os import PathLike, getcwd
 from web3 import Web3
 from web3.utils.datatypes import PropertyCheckingFactory
 from hexbytes import HexBytes
+from web3.datastructures import AttributeDict
 
 
 class HexJsonEncoder(JSONEncoder):
@@ -14,6 +15,8 @@ class HexJsonEncoder(JSONEncoder):
     def default(self, obj):
         if isinstance(obj, HexBytes):
             return obj.hex()
+        if isinstance(obj, AttributeDict):
+            return dict(obj)
         return super().default(obj)
 
 class DeployContract:
