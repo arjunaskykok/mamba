@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "black-mamba"
-version = "0.2.1"
+version = "0.3.0"
 description = "Development framework to write, test and deploy smart contracts written in Vyper. It has integrated web3.py support."
 authors = ["Arjuna Sky Kok <arjuna@mamba.black>"]
 license = "LGPL-3.0"
@@ -15,11 +15,11 @@ classifiers = [
 
 [tool.poetry.dependencies]
 python = "^3.6"
-vyper = "0.1.0b12"
-pytest = "^5.1"
-web3 = "4.7.2"
-eth-tester = "0.1.0b32"
-py-evm = "0.2.0a41"
+vyper = "0.1.0b13"
+pytest = "5.2"
+web3 = "5.2.0"
+eth-tester = "0.2.0b3"
+py-evm = "0.3.0a7"
 
 [tool.poetry.scripts]
 mamba = "black_mamba.mamba_cli:parse_cli_args"

@@ -1,5 +1,5 @@
-vyper
-pytest
-web3==4.7.2
-eth-tester==0.1.0b32
-py-evm==0.2.0a41
+vyper==0.1.0b13
+pytest==5.2
+web3==5.2.0
+eth-tester==0.2.0b3
+py-evm==0.3.0a7

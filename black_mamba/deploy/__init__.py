@@ -5,7 +5,6 @@ from typing import List, Dict, Optional, Any
 from os import PathLike, getcwd
 
 from web3 import Web3
-from web3.utils.datatypes import PropertyCheckingFactory
 from hexbytes import HexBytes
 from web3.datastructures import AttributeDict
 
@@ -36,7 +35,7 @@ class DeployContract:
 
     def contract(self,
                  smart_contract_name : str,
-                 build_contracts_directory : Path = Path(getcwd()) / Path("build") / Path("contracts")) -> PropertyCheckingFactory:
+                 build_contracts_directory : Path = Path(getcwd()) / Path("build") / Path("contracts")):
         contract_json_file = (build_contracts_directory / smart_contract_name).with_suffix('.json')
 
         with open(contract_json_file, "r") as smart_contract_build_file:
@@ -49,7 +48,7 @@ class DeployContract:
     def deployed_contract(self,
                           smart_contract_name : str,
                           build_contracts_directory : Path = Path(getcwd()) / Path("build") / Path("contracts"),
-                          deployed_contracts_directory : Path = Path(getcwd()) / Path("deployed")) -> PropertyCheckingFactory:
+                          deployed_contracts_directory : Path = Path(getcwd()) / Path("deployed")):
         prefix_deployed_file = "receipt_"
         contract_json_file = (build_contracts_directory / smart_contract_name).with_suffix(".json")
         deployed_name = prefix_deployed_file + smart_contract_name
@@ -82,7 +81,7 @@ class DeployContract:
             tx_hash = self.w3.eth.sendRawTransaction(tx_signed.rawTransaction)
         else:
             if transaction_parameters and not transaction_parameters.get("from", None):
-                transaction_parameters["from"] = self.w3.personal.listAccounts[0]
+                transaction_parameters["from"] = self.w3.geth.personal.listAccounts()[0]
             if transaction_parameters and not transaction_parameters.get("nonce", None):
                 from_account = transaction_parameters["from"]
                 nonce = self.w3.eth.getTransactionCount(from_account)
