@@ -37,5 +37,5 @@ Mamba documentation can be found at [Mamba website](https://mamba.black/document
 
 ## Contributing
 
-I invite you to join Mamba squad! You can contributing to Mamba by
+I invite you to join Mamba squad! You can contribute to Mamba by
 writing documentation, finding bugs, and creating pull requests.
