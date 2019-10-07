@@ -26,17 +26,13 @@ To set up the the structure of Mamba project directory:
 
 ```bash
 $ mamba init
-```
-```bash
 $ edit contracts/HelloWorld.vy
-```
-```bash
 $ mamba compile
 ```
 
 ## Documentation
 
-Mamba documentation can be found at [Read the Docs](https://mamba.black/documentation).
+Mamba documentation can be found at [Mamba website](https://mamba.black/documentation).
 
 
 ## Contributing
