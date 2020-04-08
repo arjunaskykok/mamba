@@ -2,7 +2,8 @@
   "config": {
     "chainId": 15,
     "homesteadBlock": 0,
-    "eip155Block": 0,
+    "eip150block": 0,
+    "eip155block": 0,
     "eip158Block": 0
   },
   "nonce": "0xdeadbeefdeadbeef",
