@@ -36,14 +36,18 @@ def init_geth_datadir(datadir: Path):
     geth_process = Popen(["geth", "--datadir", ".", "init", "genesis.json"], cwd=datadir)
     geth_process.communicate()
 
-def run_dev_server(datadir: Path, httpserver: bool):
-    geth_command = ["geth", "--networkid", "15", "--datadir", ".", "--mine", "--minerthreads", "1", "--etherbase", "0x3333333333333333333333333333333333333333"]
+def run_dev_server(datadir: Path, httpserver: bool, websocket: bool):
+    geth_command = ["geth", "--networkid", "15", "--datadir", ".", "--mine", "--minerthreads", "1",
+                    "--etherbase", "0x3333333333333333333333333333333333333333",
+                    "--targetgaslimit", "10000000"]
     if httpserver:
-        geth_command.extend(["--ws", "--rpc"])
+        geth_command.extend(["--rpc"])
+    if websocket:
+        geth_command.extend(["--ws"])
     geth_process = Popen(geth_command, cwd=datadir)
     geth_process.communicate()
 
-def run_server(datadir: Path, httpserver: bool):
+def run_server(datadir: Path, httpserver: bool, websocket: bool):
     setup_datadir(datadir)
     if not check_geth_process():
         print("You need to install Geth and put it in PATH.")
@@ -51,4 +55,4 @@ def run_server(datadir: Path, httpserver: bool):
         return
     if not check_datadir_inited(datadir):
         init_geth_datadir(datadir)
-    run_dev_server(datadir, httpserver)
+    run_dev_server(datadir, httpserver, websocket)

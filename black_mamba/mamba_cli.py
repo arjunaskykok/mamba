@@ -11,6 +11,7 @@ def parse_cli_args():
     parser = ArgumentParser(description="Mamba Framework")
     parser.add_argument('mode', type=str, help="mode of Mamba tool")
     parser.add_argument('--httpserver', action="store_true", required=False)
+    parser.add_argument('--websocket', action="store_true", required=False)
 
     arguments = parser.parse_args()
 
@@ -20,7 +21,7 @@ def parse_cli_args():
     elif mode == 'compile':
         compile_all_files(Path('contracts'), Path('build') / Path('contracts'), Path("migrations"))
     elif mode == "server":
-        run_server(Path("datadir"), arguments.httpserver)
+        run_server(Path("datadir"), arguments.httpserver, arguments.websocket)
 
 
 if __name__ == "__main__":

@@ -32,6 +32,9 @@ class DeployContract:
         elif development_network["mode"]=="IPC":
             ipc_url = development_network["url"]
             self.w3 = Web3(Web3.IPCProvider(ipc_url))
+        elif development_network["mode"]=="Websocket":
+            server = "ws://" + development_network["host"] + ":" + str(development_network["port"])
+            self.w3 = Web3(Web3.WebsocketProvider(server))
 
     def contract(self,
                  smart_contract_name : str,
