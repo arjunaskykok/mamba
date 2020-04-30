@@ -1,3 +1,6 @@
+import os
+
+
 networks = {
     "development": {
         "mode": "HTTP",
@@ -30,4 +33,12 @@ networks = {
     #    "scheme": "https / wss",
     #    "endpoints": "mainnet / ropsten / goerly / rinkeby / kovan"
     #}
+}
+
+auth = {
+    "development": {
+        #"private_key": os.environ("MY_PRIVATE_KEY")
+        "password": "password_to_unlock_keyfile",
+        "keyfile": "keyfile.json"
+    }
 }

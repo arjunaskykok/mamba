@@ -17,6 +17,7 @@ class TestWithContracts():
         self.migration2_file = self.migrations_dir / Path("deploy_HelloParameters.py")
         self.json2_compiled_fixture = self.fixtures_dir / Path("HelloParameters.json")
         self.json2_compiled_file = self.build_contracts_dir / Path('HelloParameters.json')
+        self.keyfile2_file = self.tmp_path / Path('keyfile2.json')
 
         if not self.build_dir.exists():
             self.build_dir.mkdir()
@@ -44,3 +45,5 @@ class TestWithContracts():
             self.migrations_dir.rmdir()
         if self.decentralized_app_dir.exists():
             self.decentralized_app_dir.rmdir()
+        if self.keyfile2_file.exists():
+            self.keyfile2_file.unlink()
