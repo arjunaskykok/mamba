@@ -3,3 +3,4 @@ pytest==5.4.1
 web3==5.9.0
 eth-tester==0.4.0b1
 py-evm==0.3.0a14
+mypy
