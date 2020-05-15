@@ -2,7 +2,7 @@ from json import dumps
 from pathlib import Path
 
 from ethpm import Package
-from black_mamba.deploy import DeployContract
+from black_mamba.contract.contract import Contract
 
 
 class PackageManager:
@@ -32,7 +32,7 @@ class PackageManager:
         """
         self._create_ethpm_packages_dir()
 
-        contract_instance = DeployContract()
+        contract_instance = Contract()
         w3 = contract_instance.w3
 
         is_file = True
