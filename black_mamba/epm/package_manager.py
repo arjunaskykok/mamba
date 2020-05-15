@@ -46,17 +46,20 @@ class PackageManager:
         else:
             package = Package.from_uri(uri, w3)
 
-        self._write_manifests_to_filesystem(package.name, package.manifest)
+        self._write_manifests_to_filesystem(package.name, package.version, package.manifest)
 
     def _create_ethpm_packages_dir(self):
         if not self.packages_dir.exists():
             self.packages_dir.mkdir()
 
-    def _write_manifests_to_filesystem(self, name: str, manifest: str):
+    def _write_manifests_to_filesystem(self, name: str, version: str, manifest: str):
         package_dir = self.packages_dir / Path(name)
         if not package_dir.exists():
             package_dir.mkdir()
+        version_dir = package_dir / Path(version)
+        if not version_dir.exists():
+            version_dir.mkdir()
         manifest_content = dumps(manifest)
-        manifest_file = package_dir / Path("manifest.json")
+        manifest_file = version_dir / Path("manifest.json")
         with open(manifest_file, "w") as f:
             f.write(manifest_content)

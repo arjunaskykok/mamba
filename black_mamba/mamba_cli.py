@@ -40,7 +40,7 @@ def parse_cli_args():
         elif arguments.keyfile_mode == "decrypt":
             Authentication.decrypt_keyfile(arguments.keyfile_file, arguments.keyfile_password)
     elif arguments.mode=="epm":
-        epm = PackageManager(Path('_ethpm_packages'))
+        epm = PackageManager(Path('ethpm_packages'))
         epm.operate(arguments.epm_mode, arguments.epm_uri, arguments.epm_package)
 
 
