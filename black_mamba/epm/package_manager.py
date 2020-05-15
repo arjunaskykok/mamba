@@ -20,7 +20,7 @@ class PackageManager:
         if mode=="install":
             self.install(uri)
         elif mode=="list":
-            pass
+            self.list()
         elif mode=="remove":
             pass
         elif mode=="create":
@@ -47,6 +47,13 @@ class PackageManager:
             package = Package.from_uri(uri, w3)
 
         self._write_manifests_to_filesystem(package.name, package.version, package.manifest)
+
+    def list(self):
+        """
+        List installed packages.
+        """
+        packages_list = list(map(lambda x: x.name, self.packages_dir.iterdir()))
+        print(*packages_list, sep="\n")
 
     def _create_ethpm_packages_dir(self):
         if not self.packages_dir.exists():

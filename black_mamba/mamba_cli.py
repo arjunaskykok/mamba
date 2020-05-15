@@ -6,6 +6,7 @@ from black_mamba.compilation.vyper_compiler import compile_all_files
 from black_mamba.server.geth_dev_server import run_server
 from black_mamba.auth import Authentication
 from black_mamba.epm.package_manager import PackageManager
+from black_mamba.constants import ETHEREUM_PACKAGES_DIR
 
 
 def parse_cli_args():
@@ -40,7 +41,7 @@ def parse_cli_args():
         elif arguments.keyfile_mode == "decrypt":
             Authentication.decrypt_keyfile(arguments.keyfile_file, arguments.keyfile_password)
     elif arguments.mode=="epm":
-        epm = PackageManager(Path('ethpm_packages'))
+        epm = PackageManager(Path(ETHEREUM_PACKAGES_DIR))
         epm.operate(arguments.epm_mode, arguments.epm_uri, arguments.epm_package)
 
 

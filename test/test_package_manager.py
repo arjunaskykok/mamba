@@ -1,20 +1,24 @@
 from pathlib import Path
 from shutil import copy
+from contextlib import redirect_stdout
+import io
 
 import pytest
 
 from black_mamba.epm.package_manager import PackageManager
 from black_mamba.testlib.test_with_contracts import TestWithContracts
+from black_mamba.constants import ETHEREUM_PACKAGES_DIR
 
 
 class TestPackageManager(TestWithContracts):
 
     def setup_method(self, method):
         super().setup_method(method)
-        self.packages_dir = self.tmp_path / Path('ethpm_packages')
+        self.packages_dir = self.tmp_path / Path(ETHEREUM_PACKAGES_DIR)
         self.parent_dir = self.packages_dir / "owned"
         self.version_dir = self.parent_dir / "1.0.1"
         self.manifest_file = self.version_dir / "manifest.json"
+        self.epm = PackageManager(self.packages_dir)
         self.use_infura()
 
     def test_install(self):
@@ -26,10 +30,19 @@ class TestPackageManager(TestWithContracts):
             content = f.read()
         assert fixture_content == content
 
+    def test_list(self):
+        self._install()
+        f = io.StringIO()
+        with redirect_stdout(f):
+            self.epm.list()
+
+        output = f.getvalue()
+        f.close()
+        assert output == "owned\n"
+
     def _install(self):
         uri = "https://api.github.com/repos/ethereum/web3.py/git/blobs/a7232a93f1e9e75d606f6c1da18aa16037e03480"
-        epm = PackageManager(self.packages_dir)
-        epm.install(uri)
+        self.epm.install(uri)
 
     def use_infura(self):
         copy(self.fixtures_dir / Path("infura_settings.py"), Path("settings.py"))
