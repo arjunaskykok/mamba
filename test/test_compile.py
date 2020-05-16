@@ -11,12 +11,14 @@ class TestCompile(TestWithContracts):
         compile_all_files(self.fixtures_dir, self.build_contracts_dir, self.migrations_dir)
         content = self.json_compiled_file.read_text()
         json_compiled_object = loads(content)
-        assert json_compiled_object['contractName']=='HelloWorld'
-        assert json_compiled_object['bytecode'][0:10]=='0x74010000'
-        assert json_compiled_object['abi'][0]['type']=='constructor'
-        assert json_compiled_object['abi'][1]['name']=='setGreeting'
-        assert json_compiled_object['abi'][2]['name']=='greet'
-        assert json_compiled_object['compiler']['name']=='vyper'
-        assert json_compiled_object['compiler']['version']==version
+        assert json_compiled_object["contractName"]=="HelloWorld"
+        assert json_compiled_object["bytecode"][0:10]=="0x74010000"
+        assert json_compiled_object["abi"][0]["type"]=="constructor"
+        assert json_compiled_object["abi"][1]["name"]=="setGreeting"
+        assert json_compiled_object["abi"][2]["name"]=="greet"
+        assert json_compiled_object["compiler"]["name"]=="vyper"
+        assert json_compiled_object["compiler"]["version"]==version
+        assert json_compiled_object["opcodes"][0:6]=="PUSH21"
+        assert json_compiled_object["opcodes_runtime"][0:5]=="PUSH1"
 
         assert self.migration_file.exists()

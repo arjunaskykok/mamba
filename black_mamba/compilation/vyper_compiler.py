@@ -14,17 +14,19 @@ def compile_all_files(source_code_directory: Path, build_directory: Path, migrat
             smart_contract = {}
             smart_contract[build_dir_str] = content
 
-            format = ['abi', 'bytecode']
-            compiled_code = compile_codes(smart_contract, format, 'dict')
+            formats = ["abi", "bytecode", "ast_dict", "external_interface", "interface", "method_identifiers", "asm", "source_map",
+                      "bytecode_runtime", "opcodes", "opcodes_runtime"]
+            compiled_code = compile_codes(smart_contract, formats, 'dict')
 
             smart_contract_json = {
-                'contractName': smart_contract_name,
-                'abi': compiled_code[build_dir_str]['abi'],
-                'bytecode': compiled_code[build_dir_str]['bytecode'],
-                'compiler': { 'name': 'vyper',
-                              'version': version
+                "contractName": smart_contract_name,
+                "compiler": { "name": "vyper",
+                              "version": version
                             }
             }
+
+            for format in formats:
+                smart_contract_json[format] = compiled_code[build_dir_str][format]
 
             contract_json_file = build_dir_str + '/' + smart_contract_name + '.json'
             with open(contract_json_file, 'w') as smart_contract_build_file:
