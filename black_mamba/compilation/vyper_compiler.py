@@ -15,7 +15,7 @@ def compile_all_files(source_code_directory: Path, build_directory: Path, migrat
             smart_contract[build_dir_str] = content
 
             formats = ["abi", "bytecode", "ast_dict", "external_interface", "interface", "method_identifiers", "asm", "source_map",
-                      "bytecode_runtime", "opcodes", "opcodes_runtime"]
+                      "bytecode_runtime", "opcodes", "opcodes_runtime", "devdoc", "userdoc"]
             compiled_code = compile_codes(smart_contract, formats, 'dict')
 
             smart_contract_json = {

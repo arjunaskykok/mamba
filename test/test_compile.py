@@ -20,5 +20,8 @@ class TestCompile(TestWithContracts):
         assert json_compiled_object["compiler"]["version"]==version
         assert json_compiled_object["opcodes"][0:6]=="PUSH21"
         assert json_compiled_object["opcodes_runtime"][0:5]=="PUSH1"
+        assert json_compiled_object["opcodes_runtime"][0:5]=="PUSH1"
+        assert json_compiled_object["devdoc"]["methods"]["greet()"]["details"]=="Return the greeting which is 20 bytes"
+        assert json_compiled_object["userdoc"]["notice"]=="You can use this contract for greeting"
 
         assert self.migration_file.exists()
