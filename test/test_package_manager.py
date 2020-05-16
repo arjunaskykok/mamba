@@ -40,6 +40,11 @@ class TestPackageManager(TestWithContracts):
         f.close()
         assert output == "owned\n"
 
+    def test_uninstall(self):
+        self._install()
+        self.epm.uninstall("owned")
+        assert self.parent_dir.exists() == False
+
     def _install(self):
         uri = "https://api.github.com/repos/ethereum/web3.py/git/blobs/a7232a93f1e9e75d606f6c1da18aa16037e03480"
         self.epm.install(uri)

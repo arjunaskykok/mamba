@@ -1,5 +1,6 @@
 from json import dumps
 from pathlib import Path
+from shutil import rmtree
 
 from ethpm import Package
 from black_mamba.contract.contract import Contract
@@ -21,8 +22,8 @@ class PackageManager:
             self.install(uri)
         elif mode=="list":
             self.list()
-        elif mode=="remove":
-            pass
+        elif mode=="uninstall":
+            self.uninstall(package)
         elif mode=="create":
             pass
 
@@ -54,6 +55,15 @@ class PackageManager:
         """
         packages_list = list(map(lambda x: x.name, self.packages_dir.iterdir()))
         print(*packages_list, sep="\n")
+
+    def uninstall(self, package_delete: str):
+        """
+        Remove an installed package.
+        """
+        for package_dir in self.packages_dir.iterdir():
+            if package_dir.name == package_delete:
+                rmtree(package_dir)
+                print(f"Deleted {package_delete}")
 
     def _create_ethpm_packages_dir(self):
         if not self.packages_dir.exists():
