@@ -1,5 +1,9 @@
 {
     "contractName": "HelloWorld",
+    "compiler": {
+        "name": "vyper",
+        "version": "0.1.0b17"
+    },
     "abi": [
         {
             "outputs": [],
@@ -20,26 +24,1544 @@
             "constant": false,
             "payable": false,
             "type": "function",
-            "gas": 70954
+            "gas": 70974
         },
         {
             "name": "greet",
             "outputs": [
                 {
                     "type": "bytes",
-                    "name": "out"
+                    "name": ""
                 }
             ],
             "inputs": [],
             "constant": false,
             "payable": false,
             "type": "function",
-            "gas": 4524
+            "gas": 6606
         }
     ],
-    "bytecode": "0x740100000000000000000000000000000000000000006020526f7fffffffffffffffffffffffffffffff6040527fffffffffffffffffffffffffffffffff8000000000000000000000000000000060605274012a05f1fffffffffffffffffffffffffdabf41c006080527ffffffffffffffffffffffffed5fa0e000000000000000000000000000000000060a052341561009857600080fd5b600b610140527f48656c6c6f20576f726c640000000000000000000000000000000000000000006101605261014080600060c052602060c020602082510161012060006002818352015b826101205160200211156100f557610117565b61012051602002850151610120518501555b81516001018083528114156100e2575b50505050505061033b56600035601c52740100000000000000000000000000000000000000006020526f7fffffffffffffffffffffffffffffff6040527fffffffffffffffffffffffffffffffff8000000000000000000000000000000060605274012a05f1fffffffffffffffffffffffffdabf41c006080527ffffffffffffffffffffffffed5fa0e000000000000000000000000000000000060a05263b8e46d3a600051141561013057602060046101403734156100b457600080fd5b60346004356004016101603760146004356004013511156100d457600080fd5b61016080600060c052602060c020602082510161012060006002818352015b8261012051602002111561010657610128565b61012051602002850151610120518501555b81516001018083528114156100f3575b505050505050005b63cfae3217600051141561021357341561014957600080fd5b60008060c052602060c020610180602082540161012060006002818352015b8261012051602002111561017b5761019d565b61012051850154610120516020028501525b8151600101808352811415610168575b5050505050506101805160206001820306601f82010390506101e0610180516014818352015b826101e05111156101d3576101ef565b60006101e0516101a001535b81516001018083528114156101c3575b5050506020610160526040610180510160206001820306601f8201039050610160f3005b60006000fd5b61012261033b0361012260003961012261033b036000f3",
-    "compiler": {
-        "name": "vyper",
-        "version": "0.1.0b10"
+    "bytecode": "0x740100000000000000000000000000000000000000006020526f7fffffffffffffffffffffffffffffff6040527fffffffffffffffffffffffffffffffff8000000000000000000000000000000060605274012a05f1fffffffffffffffffffffffffdabf41c006080527ffffffffffffffffffffffffed5fa0e000000000000000000000000000000000060a052341561009857600080fd5b600b610140527f48656c6c6f20576f726c640000000000000000000000000000000000000000006101605261014080600060c052602060c020602082510161012060006002818352015b826101205160200211156100f557610117565b61012051602002850151610120518501555b81516001018083528114156100e2575b50505050505061031356600436101561000d576101eb565b600035601c52740100000000000000000000000000000000000000006020526f7fffffffffffffffffffffffffffffff6040527fffffffffffffffffffffffffffffffff8000000000000000000000000000000060605274012a05f1fffffffffffffffffffffffffdabf41c006080527ffffffffffffffffffffffffed5fa0e000000000000000000000000000000000060a05263b8e46d3a60005114156101365734156100ba57600080fd5b60346004356004016101403760146004356004013511156100da57600080fd5b61014080600060c052602060c020602082510161012060006002818352015b8261012051602002111561010c5761012e565b61012051602002850151610120518501555b81516001018083528114156100f9575b505050505050005b63cfae321760005114156101ea57341561014f57600080fd5b60008060c052602060c020610180602082540161012060006002818352015b82610120516020021115610181576101a3565b61012051850154610120516020028501525b815160010180835281141561016e575b50505050505061018051806101a001818260206001820306601f82010390500336823750506020610160526040610180510160206001820306601f8201039050610160f350005b5b60006000fd5b61012261031303610122600039610122610313036000f3",
+    "ast_dict": {
+        "contract_name": "build/contracts",
+        "ast": {
+            "end_lineno": 29,
+            "ast_type": "Module",
+            "end_col_offset": 24,
+            "lineno": 1,
+            "col_offset": 0,
+            "node_id": 0,
+            "doc_string": {
+                "value": "\n@title A greeting program\n@author Arjuna Sky Kok\n@notice You can use this contract for greeting\n@dev Greetings must be done in a polite way\n",
+                "end_lineno": 6,
+                "ast_type": "Str",
+                "end_col_offset": 3,
+                "lineno": 1,
+                "col_offset": 0,
+                "node_id": 2,
+                "src": "0:147:0"
+            },
+            "body": [
+                {
+                    "value": null,
+                    "end_lineno": 7,
+                    "target": {
+                        "end_lineno": 7,
+                        "id": "greeting",
+                        "ast_type": "Name",
+                        "end_col_offset": 8,
+                        "lineno": 7,
+                        "col_offset": 0,
+                        "node_id": 4,
+                        "src": "148:8:0"
+                    },
+                    "simple": 1,
+                    "ast_type": "AnnAssign",
+                    "end_col_offset": 19,
+                    "lineno": 7,
+                    "col_offset": 0,
+                    "node_id": 3,
+                    "annotation": {
+                        "value": {
+                            "end_lineno": 7,
+                            "id": "bytes",
+                            "ast_type": "Name",
+                            "end_col_offset": 15,
+                            "lineno": 7,
+                            "col_offset": 10,
+                            "node_id": 7,
+                            "src": "158:5:0"
+                        },
+                        "end_lineno": 7,
+                        "ast_type": "Subscript",
+                        "end_col_offset": 19,
+                        "lineno": 7,
+                        "col_offset": 10,
+                        "slice": {
+                            "value": {
+                                "value": 20,
+                                "end_lineno": 7,
+                                "ast_type": "Int",
+                                "end_col_offset": 18,
+                                "lineno": 7,
+                                "col_offset": 16,
+                                "node_id": 10,
+                                "src": "164:2:0"
+                            },
+                            "end_lineno": 7,
+                            "ast_type": "Index",
+                            "end_col_offset": 18,
+                            "lineno": 7,
+                            "col_offset": 16,
+                            "node_id": 9,
+                            "src": "164:2:0"
+                        },
+                        "node_id": 6,
+                        "src": "158:9:0"
+                    },
+                    "src": "148:19:0"
+                },
+                {
+                    "name": "__init__",
+                    "end_lineno": 11,
+                    "ast_type": "FunctionDef",
+                    "end_col_offset": 33,
+                    "lineno": 9,
+                    "col_offset": 0,
+                    "body": [
+                        {
+                            "value": {
+                                "value": "Hello World",
+                                "end_lineno": 11,
+                                "ast_type": "Str",
+                                "end_col_offset": 33,
+                                "lineno": 11,
+                                "col_offset": 20,
+                                "node_id": 19,
+                                "src": "213:13:0"
+                            },
+                            "end_lineno": 11,
+                            "target": {
+                                "value": {
+                                    "end_lineno": 11,
+                                    "id": "self",
+                                    "ast_type": "Name",
+                                    "end_col_offset": 8,
+                                    "lineno": 11,
+                                    "col_offset": 4,
+                                    "node_id": 16,
+                                    "src": "197:4:0"
+                                },
+                                "end_lineno": 11,
+                                "ast_type": "Attribute",
+                                "end_col_offset": 17,
+                                "lineno": 11,
+                                "col_offset": 4,
+                                "attr": "greeting",
+                                "node_id": 15,
+                                "src": "197:13:0"
+                            },
+                            "ast_type": "Assign",
+                            "end_col_offset": 33,
+                            "lineno": 11,
+                            "col_offset": 4,
+                            "node_id": 14,
+                            "src": "197:29:0"
+                        }
+                    ],
+                    "node_id": 12,
+                    "decorator_list": [
+                        {
+                            "end_lineno": 9,
+                            "id": "public",
+                            "ast_type": "Name",
+                            "end_col_offset": 7,
+                            "lineno": 9,
+                            "col_offset": 1,
+                            "node_id": 20,
+                            "src": "170:6:0"
+                        }
+                    ],
+                    "doc_string": null,
+                    "pos": null,
+                    "args": {
+                        "end_lineno": 9,
+                        "ast_type": "arguments",
+                        "end_col_offset": 1,
+                        "defaults": [],
+                        "col_offset": 0,
+                        "lineno": 9,
+                        "node_id": 13,
+                        "args": [],
+                        "src": "169:1:0",
+                        "default": null
+                    },
+                    "src": "169:57:0",
+                    "returns": null
+                },
+                {
+                    "name": "setGreeting",
+                    "end_lineno": 20,
+                    "ast_type": "FunctionDef",
+                    "end_col_offset": 21,
+                    "lineno": 13,
+                    "col_offset": 0,
+                    "body": [
+                        {
+                            "value": {
+                                "end_lineno": 20,
+                                "id": "x",
+                                "ast_type": "Name",
+                                "end_col_offset": 21,
+                                "lineno": 20,
+                                "col_offset": 20,
+                                "node_id": 38,
+                                "src": "413:1:0"
+                            },
+                            "end_lineno": 20,
+                            "target": {
+                                "value": {
+                                    "end_lineno": 20,
+                                    "id": "self",
+                                    "ast_type": "Name",
+                                    "end_col_offset": 8,
+                                    "lineno": 20,
+                                    "col_offset": 4,
+                                    "node_id": 35,
+                                    "src": "397:4:0"
+                                },
+                                "end_lineno": 20,
+                                "ast_type": "Attribute",
+                                "end_col_offset": 17,
+                                "lineno": 20,
+                                "col_offset": 4,
+                                "attr": "greeting",
+                                "node_id": 34,
+                                "src": "397:13:0"
+                            },
+                            "ast_type": "Assign",
+                            "end_col_offset": 21,
+                            "lineno": 20,
+                            "col_offset": 4,
+                            "node_id": 33,
+                            "src": "397:17:0"
+                        }
+                    ],
+                    "node_id": 22,
+                    "decorator_list": [
+                        {
+                            "end_lineno": 13,
+                            "id": "public",
+                            "ast_type": "Name",
+                            "end_col_offset": 7,
+                            "lineno": 13,
+                            "col_offset": 1,
+                            "node_id": 40,
+                            "src": "229:6:0"
+                        }
+                    ],
+                    "doc_string": {
+                        "value": "\n    @notice Set the greeting\n    @dev Set the greeting no less than 20 bytes\n    @param x The greeting itself\n    ",
+                        "end_lineno": 19,
+                        "ast_type": "Str",
+                        "end_col_offset": 7,
+                        "lineno": 15,
+                        "col_offset": 4,
+                        "node_id": 32,
+                        "src": "271:121:0"
+                    },
+                    "pos": null,
+                    "args": {
+                        "end_lineno": 14,
+                        "ast_type": "arguments",
+                        "end_col_offset": 28,
+                        "defaults": [],
+                        "col_offset": 16,
+                        "lineno": 14,
+                        "node_id": 23,
+                        "args": [
+                            {
+                                "end_lineno": 14,
+                                "ast_type": "arg",
+                                "end_col_offset": 28,
+                                "arg": "x",
+                                "lineno": 14,
+                                "col_offset": 16,
+                                "node_id": 24,
+                                "annotation": {
+                                    "value": {
+                                        "end_lineno": 14,
+                                        "id": "bytes",
+                                        "ast_type": "Name",
+                                        "end_col_offset": 24,
+                                        "lineno": 14,
+                                        "col_offset": 19,
+                                        "node_id": 26,
+                                        "src": "255:5:0"
+                                    },
+                                    "end_lineno": 14,
+                                    "ast_type": "Subscript",
+                                    "end_col_offset": 28,
+                                    "lineno": 14,
+                                    "col_offset": 19,
+                                    "slice": {
+                                        "value": {
+                                            "value": 20,
+                                            "end_lineno": 14,
+                                            "ast_type": "Int",
+                                            "end_col_offset": 27,
+                                            "lineno": 14,
+                                            "col_offset": 25,
+                                            "node_id": 29,
+                                            "src": "261:2:0"
+                                        },
+                                        "end_lineno": 14,
+                                        "ast_type": "Index",
+                                        "end_col_offset": 27,
+                                        "lineno": 14,
+                                        "col_offset": 25,
+                                        "node_id": 28,
+                                        "src": "261:2:0"
+                                    },
+                                    "node_id": 25,
+                                    "src": "255:9:0"
+                                },
+                                "src": "252:12:0"
+                            }
+                        ],
+                        "src": "252:12:0",
+                        "default": null
+                    },
+                    "src": "228:186:0",
+                    "returns": null
+                },
+                {
+                    "name": "greet",
+                    "end_lineno": 29,
+                    "ast_type": "FunctionDef",
+                    "end_col_offset": 24,
+                    "lineno": 22,
+                    "col_offset": 0,
+                    "body": [
+                        {
+                            "value": {
+                                "value": {
+                                    "end_lineno": 29,
+                                    "id": "self",
+                                    "ast_type": "Name",
+                                    "end_col_offset": 15,
+                                    "lineno": 29,
+                                    "col_offset": 11,
+                                    "node_id": 48,
+                                    "src": "588:4:0"
+                                },
+                                "end_lineno": 29,
+                                "ast_type": "Attribute",
+                                "end_col_offset": 24,
+                                "lineno": 29,
+                                "col_offset": 11,
+                                "attr": "greeting",
+                                "node_id": 47,
+                                "src": "588:13:0"
+                            },
+                            "end_lineno": 29,
+                            "ast_type": "Return",
+                            "end_col_offset": 24,
+                            "lineno": 29,
+                            "col_offset": 4,
+                            "node_id": 46,
+                            "src": "581:20:0"
+                        }
+                    ],
+                    "node_id": 42,
+                    "decorator_list": [
+                        {
+                            "end_lineno": 22,
+                            "id": "public",
+                            "ast_type": "Name",
+                            "end_col_offset": 7,
+                            "lineno": 22,
+                            "col_offset": 1,
+                            "node_id": 51,
+                            "src": "417:6:0"
+                        }
+                    ],
+                    "doc_string": {
+                        "value": "\n    @notice Return the greeting\n    @dev Return the greeting which is 20 bytes\n    @return The greeting itself\n    ",
+                        "end_lineno": 28,
+                        "ast_type": "Str",
+                        "end_col_offset": 7,
+                        "lineno": 24,
+                        "col_offset": 4,
+                        "node_id": 45,
+                        "src": "454:122:0"
+                    },
+                    "pos": null,
+                    "args": {
+                        "end_lineno": 22,
+                        "ast_type": "arguments",
+                        "end_col_offset": 1,
+                        "defaults": [],
+                        "col_offset": 0,
+                        "lineno": 22,
+                        "node_id": 43,
+                        "args": [],
+                        "src": "416:1:0",
+                        "default": null
+                    },
+                    "src": "416:185:0",
+                    "returns": {
+                        "value": {
+                            "end_lineno": 23,
+                            "id": "bytes",
+                            "ast_type": "Name",
+                            "end_col_offset": 20,
+                            "lineno": 23,
+                            "col_offset": 15,
+                            "node_id": 54,
+                            "src": "439:5:0"
+                        },
+                        "end_lineno": 23,
+                        "ast_type": "Subscript",
+                        "end_col_offset": 24,
+                        "lineno": 23,
+                        "col_offset": 15,
+                        "slice": {
+                            "value": {
+                                "value": 20,
+                                "end_lineno": 23,
+                                "ast_type": "Int",
+                                "end_col_offset": 23,
+                                "lineno": 23,
+                                "col_offset": 21,
+                                "node_id": 57,
+                                "src": "445:2:0"
+                            },
+                            "end_lineno": 23,
+                            "ast_type": "Index",
+                            "end_col_offset": 23,
+                            "lineno": 23,
+                            "col_offset": 21,
+                            "node_id": 56,
+                            "src": "445:2:0"
+                        },
+                        "node_id": 53,
+                        "src": "439:9:0"
+                    }
+                }
+            ],
+            "src": "0:601:0"
+        }
+    },
+    "external_interface": "\n# External Contracts\ncontract Contracts:\n    def setGreeting(x: bytes[20]): modifying\n    def greet() -> bytes[20]: modifying\n\n",
+    "interface": "\n# Functions\n\n@public\ndef setGreeting(x: bytes[20]):\n    pass\n\n@public\ndef greet() -> bytes[20]:\n    pass\n\n",
+    "method_identifiers": {
+        "__init__()": "0x6e6eb99",
+        "setGreeting(bytes)": "0xb8e46d3a",
+        "greet()": "0xcfae3217"
+    },
+    "asm": "PUSH21 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 \nPUSH1 32 \nMSTORE \nPUSH16 127 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 \nPUSH1 64 \nMSTORE \nPUSH32 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 128 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 \nPUSH1 96 \nMSTORE \nPUSH21 1 42 5 241 255 255 255 255 255 255 255 255 255 255 255 255 253 171 244 28 0 \nPUSH1 128 \nMSTORE \nPUSH32 255 255 255 255 255 255 255 255 255 255 255 254 213 250 14 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 \nPUSH1 160 \nMSTORE \nCALLVALUE \nISZERO \n_sym_22 \nJUMPI \nPUSH1 0 \nDUP1 \nREVERT \n_sym_22 \nJUMPDEST \nPUSH1 11 \nPUSH2 1 64 \nMSTORE \nPUSH32 72 101 108 108 111 32 87 111 114 108 100 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 \nPUSH2 1 96 \nMSTORE \nPUSH2 1 64 \nDUP1 \nPUSH1 0 \nPUSH1 192 \nMSTORE \nPUSH1 32 \nPUSH1 192 \nSHA3 \nPUSH1 32 \nDUP3 \nMLOAD \nADD \nPUSH2 1 32 \nPUSH1 0 \nPUSH1 2 \nDUP2 \nDUP4 \nMSTORE \nADD \n_sym_23 \nJUMPDEST \nDUP3 \nPUSH2 1 32 \nMLOAD \nPUSH1 32 \nMUL \nGT \nISZERO \n_sym_26 \nJUMPI \n_sym_25 \nJUMP \n_sym_26 \nJUMPDEST \nPUSH2 1 32 \nMLOAD \nPUSH1 32 \nMUL \nDUP6 \nADD \nMLOAD \nPUSH2 1 32 \nMLOAD \nDUP6 \nADD \nSSTORE \n_sym_24 \nJUMPDEST \nDUP2 \nMLOAD \nPUSH1 1 \nADD \nDUP1 \nDUP4 \nMSTORE \nDUP2 \nEQ \nISZERO \n_sym_23 \nJUMPI \n_sym_25 \nJUMPDEST \nPOP \nPOP \nPOP \nPOP \nPOP \nPOP \n_sym_28 \nJUMP \n_sym_27 \nBLANK \nPUSH1 4 \nCALLDATASIZE \nLT \nISZERO \n_sym_29 \nJUMPI \n_sym_fallback \nJUMP \n_sym_29 \nJUMPDEST \nPUSH1 0 \nCALLDATALOAD \nPUSH1 28 \nMSTORE \nPUSH21 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 \nPUSH1 32 \nMSTORE \nPUSH16 127 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 \nPUSH1 64 \nMSTORE \nPUSH32 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 128 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 \nPUSH1 96 \nMSTORE \nPUSH21 1 42 5 241 255 255 255 255 255 255 255 255 255 255 255 255 253 171 244 28 0 \nPUSH1 128 \nMSTORE \nPUSH32 255 255 255 255 255 255 255 255 255 255 255 254 213 250 14 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 \nPUSH1 160 \nMSTORE \nPUSH4 184 228 109 58 \nPUSH1 0 \nMLOAD \nEQ \nISZERO \n_sym_30 \nJUMPI \nCALLVALUE \nISZERO \n_sym_31 \nJUMPI \nPUSH1 0 \nDUP1 \nREVERT \n_sym_31 \nJUMPDEST \nPUSH1 52 \nPUSH1 4 \nCALLDATALOAD \nPUSH1 4 \nADD \nPUSH2 1 64 \nCALLDATACOPY \nPUSH1 20 \nPUSH1 4 \nCALLDATALOAD \nPUSH1 4 \nADD \nCALLDATALOAD \nGT \nISZERO \n_sym_32 \nJUMPI \nPUSH1 0 \nDUP1 \nREVERT \n_sym_32 \nJUMPDEST \nPUSH2 1 64 \nDUP1 \nPUSH1 0 \nPUSH1 192 \nMSTORE \nPUSH1 32 \nPUSH1 192 \nSHA3 \nPUSH1 32 \nDUP3 \nMLOAD \nADD \nPUSH2 1 32 \nPUSH1 0 \nPUSH1 2 \nDUP2 \nDUP4 \nMSTORE \nADD \n_sym_33 \nJUMPDEST \nDUP3 \nPUSH2 1 32 \nMLOAD \nPUSH1 32 \nMUL \nGT \nISZERO \n_sym_36 \nJUMPI \n_sym_35 \nJUMP \n_sym_36 \nJUMPDEST \nPUSH2 1 32 \nMLOAD \nPUSH1 32 \nMUL \nDUP6 \nADD \nMLOAD \nPUSH2 1 32 \nMLOAD \nDUP6 \nADD \nSSTORE \n_sym_34 \nJUMPDEST \nDUP2 \nMLOAD \nPUSH1 1 \nADD \nDUP1 \nDUP4 \nMSTORE \nDUP2 \nEQ \nISZERO \n_sym_33 \nJUMPI \n_sym_35 \nJUMPDEST \nPOP \nPOP \nPOP \nPOP \nPOP \nPOP \nSTOP \n_sym_30 \nJUMPDEST \nPUSH4 207 174 50 23 \nPUSH1 0 \nMLOAD \nEQ \nISZERO \n_sym_37 \nJUMPI \nCALLVALUE \nISZERO \n_sym_38 \nJUMPI \nPUSH1 0 \nDUP1 \nREVERT \n_sym_38 \nJUMPDEST \nPUSH1 0 \nDUP1 \nPUSH1 192 \nMSTORE \nPUSH1 32 \nPUSH1 192 \nSHA3 \nPUSH2 1 128 \nPUSH1 32 \nDUP3 \nSLOAD \nADD \nPUSH2 1 32 \nPUSH1 0 \nPUSH1 2 \nDUP2 \nDUP4 \nMSTORE \nADD \n_sym_39 \nJUMPDEST \nDUP3 \nPUSH2 1 32 \nMLOAD \nPUSH1 32 \nMUL \nGT \nISZERO \n_sym_42 \nJUMPI \n_sym_41 \nJUMP \n_sym_42 \nJUMPDEST \nPUSH2 1 32 \nMLOAD \nDUP6 \nADD \nSLOAD \nPUSH2 1 32 \nMLOAD \nPUSH1 32 \nMUL \nDUP6 \nADD \nMSTORE \n_sym_40 \nJUMPDEST \nDUP2 \nMLOAD \nPUSH1 1 \nADD \nDUP1 \nDUP4 \nMSTORE \nDUP2 \nEQ \nISZERO \n_sym_39 \nJUMPI \n_sym_41 \nJUMPDEST \nPOP \nPOP \nPOP \nPOP \nPOP \nPOP \nPUSH2 1 128 \nMLOAD \nDUP1 \nPUSH2 1 160 \nADD \nDUP2 \nDUP3 \nPUSH1 32 \nPUSH1 1 \nDUP3 \nSUB \nMOD \nPUSH1 31 \nDUP3 \nADD \nSUB \nSWAP1 \nPOP \nSUB \nCALLDATASIZE \nDUP3 \nCALLDATACOPY \nPOP \nPOP \nPUSH1 32 \nPUSH2 1 96 \nMSTORE \nPUSH1 64 \nPUSH2 1 128 \nMLOAD \nADD \nPUSH1 32 \nPUSH1 1 \nDUP3 \nSUB \nMOD \nPUSH1 31 \nDUP3 \nADD \nSUB \nSWAP1 \nPOP \nPUSH2 1 96 \nRETURN \nPOP \nSTOP \n_sym_37 \nJUMPDEST \n_sym_fallback \nJUMPDEST \nPUSH1 0 \nPUSH1 0 \nREVERT \n_sym_28 \nJUMPDEST \n_sym_27 \n_sym_28 \nSUB \n_sym_27 \nPUSH1 0 \nCODECOPY \n_sym_27 \n_sym_28 \nSUB \nPUSH1 0 \nRETURN \n",
+    "source_map": {
+        "breakpoints": [],
+        "pc_breakpoints": [],
+        "pc_jump_map": {
+            "0": "-",
+            "8": "-",
+            "12": "-",
+            "13": "-",
+            "175": "-",
+            "181": "-",
+            "186": "-",
+            "213": "-",
+            "218": "-",
+            "249": "-",
+            "263": "-",
+            "267": "-",
+            "268": "-",
+            "286": "-",
+            "301": "-",
+            "302": "-",
+            "310": "-",
+            "324": "-",
+            "330": "-",
+            "335": "-",
+            "366": "-",
+            "380": "-",
+            "384": "-",
+            "385": "-",
+            "403": "-",
+            "418": "-",
+            "419": "-",
+            "490": "-",
+            "491": "-"
+        },
+        "pc_pos_map": {
+            "162": [
+                13,
+                0,
+                20,
+                21
+            ],
+            "167": [
+                13,
+                0,
+                20,
+                21
+            ],
+            "169": [
+                13,
+                0,
+                20,
+                21
+            ],
+            "170": [
+                13,
+                0,
+                20,
+                21
+            ],
+            "171": [
+                13,
+                0,
+                20,
+                21
+            ],
+            "172": [
+                13,
+                0,
+                20,
+                21
+            ],
+            "175": [
+                13,
+                0,
+                20,
+                21
+            ],
+            "176": [
+                13,
+                0,
+                20,
+                21
+            ],
+            "177": [
+                13,
+                0,
+                20,
+                21
+            ],
+            "178": [
+                13,
+                0,
+                20,
+                21
+            ],
+            "181": [
+                13,
+                0,
+                20,
+                21
+            ],
+            "182": [
+                13,
+                0,
+                20,
+                21
+            ],
+            "184": [
+                13,
+                0,
+                20,
+                21
+            ],
+            "185": [
+                13,
+                0,
+                20,
+                21
+            ],
+            "186": [
+                13,
+                0,
+                20,
+                21
+            ],
+            "219": [
+                20,
+                20,
+                20,
+                21
+            ],
+            "222": [
+                20,
+                4,
+                20,
+                21
+            ],
+            "223": [
+                20,
+                4,
+                20,
+                17
+            ],
+            "225": [
+                20,
+                4,
+                20,
+                21
+            ],
+            "227": [
+                20,
+                4,
+                20,
+                21
+            ],
+            "228": [
+                20,
+                4,
+                20,
+                21
+            ],
+            "230": [
+                20,
+                4,
+                20,
+                21
+            ],
+            "232": [
+                20,
+                4,
+                20,
+                21
+            ],
+            "233": [
+                20,
+                4,
+                20,
+                21
+            ],
+            "235": [
+                20,
+                4,
+                20,
+                21
+            ],
+            "236": [
+                20,
+                4,
+                20,
+                21
+            ],
+            "237": [
+                20,
+                4,
+                20,
+                21
+            ],
+            "238": [
+                20,
+                4,
+                20,
+                21
+            ],
+            "241": [
+                20,
+                4,
+                20,
+                21
+            ],
+            "243": [
+                20,
+                4,
+                20,
+                21
+            ],
+            "245": [
+                20,
+                4,
+                20,
+                21
+            ],
+            "246": [
+                20,
+                4,
+                20,
+                21
+            ],
+            "247": [
+                20,
+                4,
+                20,
+                21
+            ],
+            "248": [
+                20,
+                4,
+                20,
+                21
+            ],
+            "249": [
+                20,
+                4,
+                20,
+                21
+            ],
+            "250": [
+                20,
+                4,
+                20,
+                21
+            ],
+            "251": [
+                20,
+                4,
+                20,
+                21
+            ],
+            "254": [
+                20,
+                4,
+                20,
+                21
+            ],
+            "255": [
+                20,
+                4,
+                20,
+                21
+            ],
+            "257": [
+                20,
+                4,
+                20,
+                21
+            ],
+            "258": [
+                20,
+                4,
+                20,
+                21
+            ],
+            "259": [
+                20,
+                4,
+                20,
+                21
+            ],
+            "260": [
+                20,
+                4,
+                20,
+                21
+            ],
+            "263": [
+                20,
+                4,
+                20,
+                21
+            ],
+            "264": [
+                20,
+                4,
+                20,
+                21
+            ],
+            "267": [
+                20,
+                4,
+                20,
+                21
+            ],
+            "268": [
+                20,
+                4,
+                20,
+                21
+            ],
+            "269": [
+                20,
+                4,
+                20,
+                21
+            ],
+            "272": [
+                20,
+                4,
+                20,
+                21
+            ],
+            "273": [
+                20,
+                4,
+                20,
+                21
+            ],
+            "275": [
+                20,
+                4,
+                20,
+                21
+            ],
+            "276": [
+                20,
+                4,
+                20,
+                21
+            ],
+            "277": [
+                20,
+                4,
+                20,
+                21
+            ],
+            "278": [
+                20,
+                4,
+                20,
+                21
+            ],
+            "279": [
+                20,
+                4,
+                20,
+                21
+            ],
+            "282": [
+                20,
+                4,
+                20,
+                21
+            ],
+            "283": [
+                20,
+                4,
+                20,
+                21
+            ],
+            "284": [
+                20,
+                4,
+                20,
+                21
+            ],
+            "285": [
+                20,
+                4,
+                20,
+                21
+            ],
+            "286": [
+                20,
+                4,
+                20,
+                21
+            ],
+            "287": [
+                20,
+                4,
+                20,
+                21
+            ],
+            "288": [
+                20,
+                4,
+                20,
+                21
+            ],
+            "289": [
+                20,
+                4,
+                20,
+                21
+            ],
+            "291": [
+                20,
+                4,
+                20,
+                21
+            ],
+            "292": [
+                20,
+                4,
+                20,
+                21
+            ],
+            "293": [
+                20,
+                4,
+                20,
+                21
+            ],
+            "294": [
+                20,
+                4,
+                20,
+                21
+            ],
+            "295": [
+                20,
+                4,
+                20,
+                21
+            ],
+            "296": [
+                20,
+                4,
+                20,
+                21
+            ],
+            "297": [
+                20,
+                4,
+                20,
+                21
+            ],
+            "298": [
+                20,
+                4,
+                20,
+                21
+            ],
+            "301": [
+                20,
+                4,
+                20,
+                21
+            ],
+            "302": [
+                20,
+                4,
+                20,
+                21
+            ],
+            "303": [
+                20,
+                4,
+                20,
+                21
+            ],
+            "304": [
+                20,
+                4,
+                20,
+                21
+            ],
+            "305": [
+                20,
+                4,
+                20,
+                21
+            ],
+            "306": [
+                20,
+                4,
+                20,
+                21
+            ],
+            "307": [
+                20,
+                4,
+                20,
+                21
+            ],
+            "308": [
+                20,
+                4,
+                20,
+                21
+            ],
+            "309": [
+                13,
+                0,
+                20,
+                21
+            ],
+            "310": [
+                13,
+                0,
+                20,
+                21
+            ],
+            "311": [
+                22,
+                0,
+                29,
+                24
+            ],
+            "316": [
+                22,
+                0,
+                29,
+                24
+            ],
+            "318": [
+                22,
+                0,
+                29,
+                24
+            ],
+            "319": [
+                22,
+                0,
+                29,
+                24
+            ],
+            "320": [
+                22,
+                0,
+                29,
+                24
+            ],
+            "321": [
+                22,
+                0,
+                29,
+                24
+            ],
+            "324": [
+                22,
+                0,
+                29,
+                24
+            ],
+            "325": [
+                22,
+                0,
+                29,
+                24
+            ],
+            "326": [
+                22,
+                0,
+                29,
+                24
+            ],
+            "327": [
+                22,
+                0,
+                29,
+                24
+            ],
+            "330": [
+                22,
+                0,
+                29,
+                24
+            ],
+            "331": [
+                22,
+                0,
+                29,
+                24
+            ],
+            "333": [
+                22,
+                0,
+                29,
+                24
+            ],
+            "334": [
+                22,
+                0,
+                29,
+                24
+            ],
+            "335": [
+                22,
+                0,
+                29,
+                24
+            ],
+            "336": [
+                29,
+                11,
+                29,
+                24
+            ],
+            "339": [
+                29,
+                4,
+                29,
+                24
+            ],
+            "341": [
+                29,
+                4,
+                29,
+                24
+            ],
+            "342": [
+                29,
+                4,
+                29,
+                24
+            ],
+            "344": [
+                29,
+                4,
+                29,
+                24
+            ],
+            "346": [
+                29,
+                4,
+                29,
+                24
+            ],
+            "347": [
+                29,
+                4,
+                29,
+                24
+            ],
+            "350": [
+                29,
+                4,
+                29,
+                24
+            ],
+            "352": [
+                29,
+                4,
+                29,
+                24
+            ],
+            "353": [
+                29,
+                4,
+                29,
+                24
+            ],
+            "354": [
+                29,
+                4,
+                29,
+                24
+            ],
+            "355": [
+                29,
+                4,
+                29,
+                24
+            ],
+            "358": [
+                29,
+                4,
+                29,
+                24
+            ],
+            "360": [
+                29,
+                4,
+                29,
+                24
+            ],
+            "362": [
+                29,
+                4,
+                29,
+                24
+            ],
+            "363": [
+                29,
+                4,
+                29,
+                24
+            ],
+            "364": [
+                29,
+                4,
+                29,
+                24
+            ],
+            "365": [
+                29,
+                4,
+                29,
+                24
+            ],
+            "366": [
+                29,
+                4,
+                29,
+                24
+            ],
+            "367": [
+                29,
+                4,
+                29,
+                24
+            ],
+            "368": [
+                29,
+                4,
+                29,
+                24
+            ],
+            "371": [
+                29,
+                4,
+                29,
+                24
+            ],
+            "372": [
+                29,
+                4,
+                29,
+                24
+            ],
+            "374": [
+                29,
+                4,
+                29,
+                24
+            ],
+            "375": [
+                29,
+                4,
+                29,
+                24
+            ],
+            "376": [
+                29,
+                4,
+                29,
+                24
+            ],
+            "377": [
+                29,
+                4,
+                29,
+                24
+            ],
+            "380": [
+                29,
+                4,
+                29,
+                24
+            ],
+            "381": [
+                29,
+                4,
+                29,
+                24
+            ],
+            "384": [
+                29,
+                4,
+                29,
+                24
+            ],
+            "385": [
+                29,
+                4,
+                29,
+                24
+            ],
+            "386": [
+                29,
+                4,
+                29,
+                24
+            ],
+            "389": [
+                29,
+                4,
+                29,
+                24
+            ],
+            "390": [
+                29,
+                4,
+                29,
+                24
+            ],
+            "391": [
+                29,
+                4,
+                29,
+                24
+            ],
+            "392": [
+                29,
+                4,
+                29,
+                24
+            ],
+            "393": [
+                29,
+                4,
+                29,
+                24
+            ],
+            "396": [
+                29,
+                4,
+                29,
+                24
+            ],
+            "397": [
+                29,
+                4,
+                29,
+                24
+            ],
+            "399": [
+                29,
+                4,
+                29,
+                24
+            ],
+            "400": [
+                29,
+                4,
+                29,
+                24
+            ],
+            "401": [
+                29,
+                4,
+                29,
+                24
+            ],
+            "402": [
+                29,
+                4,
+                29,
+                24
+            ],
+            "403": [
+                29,
+                4,
+                29,
+                24
+            ],
+            "404": [
+                29,
+                4,
+                29,
+                24
+            ],
+            "405": [
+                29,
+                4,
+                29,
+                24
+            ],
+            "406": [
+                29,
+                4,
+                29,
+                24
+            ],
+            "408": [
+                29,
+                4,
+                29,
+                24
+            ],
+            "409": [
+                29,
+                4,
+                29,
+                24
+            ],
+            "410": [
+                29,
+                4,
+                29,
+                24
+            ],
+            "411": [
+                29,
+                4,
+                29,
+                24
+            ],
+            "412": [
+                29,
+                4,
+                29,
+                24
+            ],
+            "413": [
+                29,
+                4,
+                29,
+                24
+            ],
+            "414": [
+                29,
+                4,
+                29,
+                24
+            ],
+            "415": [
+                29,
+                4,
+                29,
+                24
+            ],
+            "418": [
+                29,
+                4,
+                29,
+                24
+            ],
+            "419": [
+                29,
+                4,
+                29,
+                24
+            ],
+            "420": [
+                29,
+                4,
+                29,
+                24
+            ],
+            "421": [
+                29,
+                4,
+                29,
+                24
+            ],
+            "422": [
+                29,
+                4,
+                29,
+                24
+            ],
+            "423": [
+                29,
+                4,
+                29,
+                24
+            ],
+            "424": [
+                29,
+                4,
+                29,
+                24
+            ],
+            "425": [
+                29,
+                4,
+                29,
+                24
+            ],
+            "456": [
+                29,
+                4,
+                29,
+                24
+            ],
+            "457": [
+                29,
+                4,
+                29,
+                24
+            ],
+            "459": [
+                29,
+                4,
+                29,
+                24
+            ],
+            "462": [
+                29,
+                4,
+                29,
+                24
+            ],
+            "463": [
+                29,
+                4,
+                29,
+                24
+            ],
+            "465": [
+                29,
+                4,
+                29,
+                24
+            ],
+            "468": [
+                29,
+                4,
+                29,
+                24
+            ],
+            "469": [
+                29,
+                4,
+                29,
+                24
+            ],
+            "484": [
+                29,
+                4,
+                29,
+                24
+            ],
+            "487": [
+                29,
+                4,
+                29,
+                24
+            ],
+            "488": [
+                22,
+                0,
+                29,
+                24
+            ],
+            "489": [
+                22,
+                0,
+                29,
+                24
+            ],
+            "490": [
+                22,
+                0,
+                29,
+                24
+            ]
+        },
+        "pc_pos_map_compressed": "-1:-1:0:-;;;;;:::-;;:::-;:::-;;;;;;;;;;;;;;;;;;;;228:186;;;;;;:::-;;;;:::-;;;;:::-;-1:-1;;;;;;;;;;;;;;;;:::-;;;;:::-;413:1;397:17;:13;:17;;;;;;;;;;;;;;;;:::-;;;;;;;;;:::-;;:::-;:::-;;;;;;;;;;;;;:::-;;;;;;;;;;;;:::-;:::-;;;;;;;228:186;:::-;416:185;;;;;;:::-;;;;:::-;;;;:::-;588:13;-1:-1;581:20;;;;;;;;;;;;;;;;;:::-;;;;;;;;;:::-;;:::-;:::-;;;;;;;;;;;;;:::-;;;;;;;;;;;;:::-;:::-;;;;;;;-1:-1;;;;;;;;;;;;;;;;;;;;;;;581:20;;;;;;;;-1:-1;;;;;;;;;;;581:20;;416:185;;:::-;-1:-1::-;;;;"
+    },
+    "bytecode_runtime": "0x600436101561000d576101eb565b600035601c52740100000000000000000000000000000000000000006020526f7fffffffffffffffffffffffffffffff6040527fffffffffffffffffffffffffffffffff8000000000000000000000000000000060605274012a05f1fffffffffffffffffffffffffdabf41c006080527ffffffffffffffffffffffffed5fa0e000000000000000000000000000000000060a05263b8e46d3a60005114156101365734156100ba57600080fd5b60346004356004016101403760146004356004013511156100da57600080fd5b61014080600060c052602060c020602082510161012060006002818352015b8261012051602002111561010c5761012e565b61012051602002850151610120518501555b81516001018083528114156100f9575b505050505050005b63cfae321760005114156101ea57341561014f57600080fd5b60008060c052602060c020610180602082540161012060006002818352015b82610120516020021115610181576101a3565b61012051850154610120516020028501525b815160010180835281141561016e575b50505050505061018051806101a001818260206001820306601f82010390500336823750506020610160526040610180510160206001820306601f8201039050610160f350005b5b60006000fd",
+    "opcodes": "PUSH21 0x010000000000000000000000000000000000000000 PUSH1 0x20 MSTORE PUSH16 0x7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF PUSH1 0x40 MSTORE PUSH32 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF80000000000000000000000000000000 PUSH1 0x60 MSTORE PUSH21 0x012A05F1FFFFFFFFFFFFFFFFFFFFFFFFFDABF41C00 PUSH1 0x80 MSTORE PUSH32 0xFFFFFFFFFFFFFFFFFFFFFFFED5FA0E0000000000000000000000000000000000 PUSH1 0xA0 MSTORE CALLVALUE ISZERO PUSH2 0x0098 JUMPI PUSH1 0x00 DUP1 REVERT JUMPDEST PUSH1 0x0B PUSH2 0x0140 MSTORE PUSH32 0x48656C6C6F20576F726C64000000000000000000000000000000000000000000 PUSH2 0x0160 MSTORE PUSH2 0x0140 DUP1 PUSH1 0x00 PUSH1 0xC0 MSTORE PUSH1 0x20 PUSH1 0xC0 SHA3 PUSH1 0x20 DUP3 MLOAD ADD PUSH2 0x0120 PUSH1 0x00 PUSH1 0x02 DUP2 DUP4 MSTORE ADD JUMPDEST DUP3 PUSH2 0x0120 MLOAD PUSH1 0x20 MUL GT ISZERO PUSH2 0x00F5 JUMPI PUSH2 0x0117 JUMP JUMPDEST PUSH2 0x0120 MLOAD PUSH1 0x20 MUL DUP6 ADD MLOAD PUSH2 0x0120 MLOAD DUP6 ADD SSTORE JUMPDEST DUP2 MLOAD PUSH1 0x01 ADD DUP1 DUP4 MSTORE DUP2 EQ ISZERO PUSH2 0x00E2 JUMPI JUMPDEST POP POP POP POP POP POP PUSH2 0x0313 JUMP PUSH1 0x04 CALLDATASIZE LT ISZERO PUSH2 0x000D JUMPI PUSH2 0x01EB JUMP JUMPDEST PUSH1 0x00 CALLDATALOAD PUSH1 0x1C MSTORE PUSH21 0x010000000000000000000000000000000000000000 PUSH1 0x20 MSTORE PUSH16 0x7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF PUSH1 0x40 MSTORE PUSH32 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF80000000000000000000000000000000 PUSH1 0x60 MSTORE PUSH21 0x012A05F1FFFFFFFFFFFFFFFFFFFFFFFFFDABF41C00 PUSH1 0x80 MSTORE PUSH32 0xFFFFFFFFFFFFFFFFFFFFFFFED5FA0E0000000000000000000000000000000000 PUSH1 0xA0 MSTORE PUSH4 0xB8E46D3A PUSH1 0x00 MLOAD EQ ISZERO PUSH2 0x0136 JUMPI CALLVALUE ISZERO PUSH2 0x00BA JUMPI PUSH1 0x00 DUP1 REVERT JUMPDEST PUSH1 0x34 PUSH1 0x04 CALLDATALOAD PUSH1 0x04 ADD PUSH2 0x0140 CALLDATACOPY PUSH1 0x14 PUSH1 0x04 CALLDATALOAD PUSH1 0x04 ADD CALLDATALOAD GT ISZERO PUSH2 0x00DA JUMPI PUSH1 0x00 DUP1 REVERT JUMPDEST PUSH2 0x0140 DUP1 PUSH1 0x00 PUSH1 0xC0 MSTORE PUSH1 0x20 PUSH1 0xC0 SHA3 PUSH1 0x20 DUP3 MLOAD ADD PUSH2 0x0120 PUSH1 0x00 PUSH1 0x02 DUP2 DUP4 MSTORE ADD JUMPDEST DUP3 PUSH2 0x0120 MLOAD PUSH1 0x20 MUL GT ISZERO PUSH2 0x010C JUMPI PUSH2 0x012E JUMP JUMPDEST PUSH2 0x0120 MLOAD PUSH1 0x20 MUL DUP6 ADD MLOAD PUSH2 0x0120 MLOAD DUP6 ADD SSTORE JUMPDEST DUP2 MLOAD PUSH1 0x01 ADD DUP1 DUP4 MSTORE DUP2 EQ ISZERO PUSH2 0x00F9 JUMPI JUMPDEST POP POP POP POP POP POP STOP JUMPDEST PUSH4 0xCFAE3217 PUSH1 0x00 MLOAD EQ ISZERO PUSH2 0x01EA JUMPI CALLVALUE ISZERO PUSH2 0x014F JUMPI PUSH1 0x00 DUP1 REVERT JUMPDEST PUSH1 0x00 DUP1 PUSH1 0xC0 MSTORE PUSH1 0x20 PUSH1 0xC0 SHA3 PUSH2 0x0180 PUSH1 0x20 DUP3 SLOAD ADD PUSH2 0x0120 PUSH1 0x00 PUSH1 0x02 DUP2 DUP4 MSTORE ADD JUMPDEST DUP3 PUSH2 0x0120 MLOAD PUSH1 0x20 MUL GT ISZERO PUSH2 0x0181 JUMPI PUSH2 0x01A3 JUMP JUMPDEST PUSH2 0x0120 MLOAD DUP6 ADD SLOAD PUSH2 0x0120 MLOAD PUSH1 0x20 MUL DUP6 ADD MSTORE JUMPDEST DUP2 MLOAD PUSH1 0x01 ADD DUP1 DUP4 MSTORE DUP2 EQ ISZERO PUSH2 0x016E JUMPI JUMPDEST POP POP POP POP POP POP PUSH2 0x0180 MLOAD DUP1 PUSH2 0x01A0 ADD DUP2 DUP3 PUSH1 0x20 PUSH1 0x01 DUP3 SUB MOD PUSH1 0x1F DUP3 ADD SUB SWAP1 POP SUB CALLDATASIZE DUP3 CALLDATACOPY POP POP PUSH1 0x20 PUSH2 0x0160 MSTORE PUSH1 0x40 PUSH2 0x0180 MLOAD ADD PUSH1 0x20 PUSH1 0x01 DUP3 SUB MOD PUSH1 0x1F DUP3 ADD SUB SWAP1 POP PUSH2 0x0160 RETURN POP STOP JUMPDEST JUMPDEST PUSH1 0x00 PUSH1 0x00 REVERT JUMPDEST PUSH2 0x0122 PUSH2 0x0313 SUB PUSH2 0x0122 PUSH1 0x00 CODECOPY PUSH2 0x0122 PUSH2 0x0313 SUB PUSH1 0x00 RETURN",
+    "opcodes_runtime": "PUSH1 0x04 CALLDATASIZE LT ISZERO PUSH2 0x000D JUMPI PUSH2 0x01EB JUMP JUMPDEST PUSH1 0x00 CALLDATALOAD PUSH1 0x1C MSTORE PUSH21 0x010000000000000000000000000000000000000000 PUSH1 0x20 MSTORE PUSH16 0x7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF PUSH1 0x40 MSTORE PUSH32 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF80000000000000000000000000000000 PUSH1 0x60 MSTORE PUSH21 0x012A05F1FFFFFFFFFFFFFFFFFFFFFFFFFDABF41C00 PUSH1 0x80 MSTORE PUSH32 0xFFFFFFFFFFFFFFFFFFFFFFFED5FA0E0000000000000000000000000000000000 PUSH1 0xA0 MSTORE PUSH4 0xB8E46D3A PUSH1 0x00 MLOAD EQ ISZERO PUSH2 0x0136 JUMPI CALLVALUE ISZERO PUSH2 0x00BA JUMPI PUSH1 0x00 DUP1 REVERT JUMPDEST PUSH1 0x34 PUSH1 0x04 CALLDATALOAD PUSH1 0x04 ADD PUSH2 0x0140 CALLDATACOPY PUSH1 0x14 PUSH1 0x04 CALLDATALOAD PUSH1 0x04 ADD CALLDATALOAD GT ISZERO PUSH2 0x00DA JUMPI PUSH1 0x00 DUP1 REVERT JUMPDEST PUSH2 0x0140 DUP1 PUSH1 0x00 PUSH1 0xC0 MSTORE PUSH1 0x20 PUSH1 0xC0 SHA3 PUSH1 0x20 DUP3 MLOAD ADD PUSH2 0x0120 PUSH1 0x00 PUSH1 0x02 DUP2 DUP4 MSTORE ADD JUMPDEST DUP3 PUSH2 0x0120 MLOAD PUSH1 0x20 MUL GT ISZERO PUSH2 0x010C JUMPI PUSH2 0x012E JUMP JUMPDEST PUSH2 0x0120 MLOAD PUSH1 0x20 MUL DUP6 ADD MLOAD PUSH2 0x0120 MLOAD DUP6 ADD SSTORE JUMPDEST DUP2 MLOAD PUSH1 0x01 ADD DUP1 DUP4 MSTORE DUP2 EQ ISZERO PUSH2 0x00F9 JUMPI JUMPDEST POP POP POP POP POP POP STOP JUMPDEST PUSH4 0xCFAE3217 PUSH1 0x00 MLOAD EQ ISZERO PUSH2 0x01EA JUMPI CALLVALUE ISZERO PUSH2 0x014F JUMPI PUSH1 0x00 DUP1 REVERT JUMPDEST PUSH1 0x00 DUP1 PUSH1 0xC0 MSTORE PUSH1 0x20 PUSH1 0xC0 SHA3 PUSH2 0x0180 PUSH1 0x20 DUP3 SLOAD ADD PUSH2 0x0120 PUSH1 0x00 PUSH1 0x02 DUP2 DUP4 MSTORE ADD JUMPDEST DUP3 PUSH2 0x0120 MLOAD PUSH1 0x20 MUL GT ISZERO PUSH2 0x0181 JUMPI PUSH2 0x01A3 JUMP JUMPDEST PUSH2 0x0120 MLOAD DUP6 ADD SLOAD PUSH2 0x0120 MLOAD PUSH1 0x20 MUL DUP6 ADD MSTORE JUMPDEST DUP2 MLOAD PUSH1 0x01 ADD DUP1 DUP4 MSTORE DUP2 EQ ISZERO PUSH2 0x016E JUMPI JUMPDEST POP POP POP POP POP POP PUSH2 0x0180 MLOAD DUP1 PUSH2 0x01A0 ADD DUP2 DUP3 PUSH1 0x20 PUSH1 0x01 DUP3 SUB MOD PUSH1 0x1F DUP3 ADD SUB SWAP1 POP SUB CALLDATASIZE DUP3 CALLDATACOPY POP POP PUSH1 0x20 PUSH2 0x0160 MSTORE PUSH1 0x40 PUSH2 0x0180 MLOAD ADD PUSH1 0x20 PUSH1 0x01 DUP3 SUB MOD PUSH1 0x1F DUP3 ADD SUB SWAP1 POP PUSH2 0x0160 RETURN POP STOP JUMPDEST JUMPDEST PUSH1 0x00 PUSH1 0x00 REVERT",
+    "devdoc": {
+        "title": "A greeting program",
+        "author": "Arjuna Sky Kok",
+        "details": "Greetings must be done in a polite way",
+        "methods": {
+            "setGreeting(bytes)": {
+                "details": "Set the greeting no less than 20 bytes",
+                "params": {
+                    "x": "The greeting itself"
+                }
+            },
+            "greet()": {
+                "details": "Return the greeting which is 20 bytes",
+                "returns": {
+                    "_0": "The greeting itself"
+                }
+            }
+        }
+    },
+    "userdoc": {
+        "notice": "You can use this contract for greeting",
+        "methods": {
+            "setGreeting(bytes)": {
+                "notice": "Set the greeting"
+            },
+            "greet()": {
+                "notice": "Return the greeting"
+            }
+        }
     }
 }

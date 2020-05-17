@@ -8,6 +8,7 @@ from hexbytes import HexBytes
 from web3.datastructures import AttributeDict
 
 from black_mamba.contract.contract import Contract
+from black_mamba.constants import SMART_CONTRACT_BUILD_DIR
 
 
 class HexJsonEncoder(JSONEncoder):
@@ -26,7 +27,7 @@ class DeployContract(Contract):
 
     def contract(self,
                  smart_contract_name : str,
-                 build_contracts_directory : Path = Path(getcwd()) / Path("build") / Path("contracts")):
+                 build_contracts_directory : Path = SMART_CONTRACT_BUILD_DIR):
         contract_json_file = (build_contracts_directory / smart_contract_name).with_suffix('.json')
 
         with open(contract_json_file, "r") as smart_contract_build_file:
@@ -38,7 +39,7 @@ class DeployContract(Contract):
 
     def deployed_contract(self,
                           smart_contract_name : str,
-                          build_contracts_directory : Path = Path(getcwd()) / Path("build") / Path("contracts"),
+                          build_contracts_directory : Path = SMART_CONTRACT_BUILD_DIR,
                           deployed_contracts_directory : Path = Path(getcwd()) / Path("deployed")):
         prefix_deployed_file = "receipt_"
         contract_json_file = (build_contracts_directory / smart_contract_name).with_suffix(".json")
