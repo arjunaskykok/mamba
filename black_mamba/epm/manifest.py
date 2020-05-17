@@ -81,8 +81,21 @@ def create_sources(package_name: str, source_contracts_directory : Path = SMART_
 
     return sources
 
-def create_manifest(contracts: Dict, sources: Dict, package_name: str, version: str):
-    pass
+def create_manifest(contract_types: Dict, meta: Dict, package_name: str, sources: Dict, version: str) -> Dict:
+    manifest = {
+        "contract_types": contract_types,
+        "manifest_version": 2,
+        "meta": meta,
+        "package_name": package_name,
+        "sources": sources,
+        "version": version
+    }
+    return manifest
 
 def write_manifest(manifest_dict: Dict, json_file: Path):
-    pass
+    package_version = ask_package_version_from_user()
+    package_name = package_version[0]
+    version = package_version[1]
+    meta = ask_meta_from_user()
+    sources = create_sources(package_name)
+    contract_types = create_contract_types()

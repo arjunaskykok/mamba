@@ -4,7 +4,8 @@ from black_mamba.testlib.test_with_contracts import TestWithContracts
 from black_mamba.epm.manifest import (ask_meta_from_user,
                                       create_contract_types,
                                       ask_package_version_from_user,
-                                      create_sources)
+                                      create_sources,
+                                      create_manifest)
 
 
 class TestAuth(TestWithContracts):
@@ -51,3 +52,30 @@ class TestAuth(TestWithContracts):
         results = create_sources("hello", self.contracts_dir)
         result = results["./hello/HelloWorld.vy"]
         assert ('self.greeting = "Hello World"' in result) == True
+
+    def test_create_manifest(self):
+        contract_types = {
+            "HelloWorld": {
+                "compiler": {"name": "vyper"}
+            }
+        }
+        meta = {
+            "authors": ["Arjuna <arjuna@mamba.blaack>"],
+            "license": "GPL"
+        }
+        package_name = "hello"
+        sources = {
+            "./hello/HelloWorld.vy": "def greet"
+        }
+        version = "1.0.0"
+        result = create_manifest(contract_types, meta, package_name, sources, version)
+
+        expected_result = {
+            'contract_types': {'HelloWorld': {'compiler': {'name': 'vyper'}}},
+            'manifest_version': 2,
+            'meta': {'authors': ['Arjuna <arjuna@mamba.blaack>'], 'license': 'GPL'},
+            'package_name': 'hello',
+            'sources': {'./hello/HelloWorld.vy': 'def greet'},
+            'version': '1.0.0'
+        }
+        assert result == expected_result
