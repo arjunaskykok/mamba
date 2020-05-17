@@ -2,7 +2,7 @@ from json import dumps
 from pathlib import Path
 from typing import Dict, Tuple
 
-from black_mamba.constants import SMART_CONTRACT_BUILD_DIR
+from black_mamba.constants import SMART_CONTRACT_BUILD_DIR, SMART_CONTRACT_SOURCE_DIR
 from black_mamba.contract.build_contract import BuildContract
 
 
@@ -41,6 +41,7 @@ def ask_package_version_from_user() -> Tuple:
 def create_contract_types(build_contracts_directory : Path = SMART_CONTRACT_BUILD_DIR) -> Dict:
     contract_types_dict = {
     }
+
     for smart_contract in build_contracts_directory.iterdir():
         if not smart_contract.name.startswith("."):
             contract_type = {}
@@ -64,7 +65,21 @@ def create_contract_types(build_contracts_directory : Path = SMART_CONTRACT_BUIL
                 "bytecode": build_contract["bytecode_runtime"]
             }
             contract_types_dict[smart_contract.name[:-5]] = contract_type
+
     return contract_types_dict
+
+def create_sources(package_name: str, source_contracts_directory : Path = SMART_CONTRACT_SOURCE_DIR) -> Dict:
+    sources = {
+    }
+
+    for smart_contract in source_contracts_directory.iterdir():
+        if not smart_contract.name.startswith("."):
+            source_key = f"./{package_name}/{smart_contract.name}"
+            with open(smart_contract, "r") as f:
+                content = f.read()
+                sources[source_key] = content
+
+    return sources
 
 def create_manifest(contracts: Dict, sources: Dict, package_name: str, version: str):
     pass
