@@ -4,7 +4,7 @@ from shutil import rmtree
 
 from ethpm import Package
 from black_mamba.contract.contract import Contract
-from black_mamba.epm.manifest import operate_manifest
+from black_mamba.epm.manifest import write_manifest
 
 
 class PackageManager:
@@ -26,7 +26,7 @@ class PackageManager:
         elif mode=="uninstall":
             self.uninstall(package)
         elif mode=="create":
-            operate_manifest()
+            write_manifest()
 
     def install(self, uri: str):
         """

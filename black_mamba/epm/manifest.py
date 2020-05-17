@@ -2,12 +2,12 @@ from json import dumps
 from pathlib import Path
 from typing import Dict, Tuple
 
-from black_mamba.constants import SMART_CONTRACT_BUILD_DIR, SMART_CONTRACT_SOURCE_DIR
+from black_mamba.constants import (SMART_CONTRACT_BUILD_DIR,
+                                   SMART_CONTRACT_SOURCE_DIR,
+                                   EPM_BUILD_DIR,
+                                   MANIFEST_BUILD_FILE)
 from black_mamba.contract.build_contract import BuildContract
 
-
-def operate_manifest():
-    create_contract_types()
 
 def ask_meta_from_user() -> Dict:
     print("Please answer these questions for meta!")
@@ -84,7 +84,7 @@ def create_sources(package_name: str, source_contracts_directory : Path = SMART_
 def create_manifest(contract_types: Dict, meta: Dict, package_name: str, sources: Dict, version: str) -> Dict:
     manifest = {
         "contract_types": contract_types,
-        "manifest_version": 2,
+        "manifest_version": "2",
         "meta": meta,
         "package_name": package_name,
         "sources": sources,
@@ -92,10 +92,18 @@ def create_manifest(contract_types: Dict, meta: Dict, package_name: str, sources
     }
     return manifest
 
-def write_manifest(manifest_dict: Dict, json_file: Path):
+def write_manifest(build_contracts_directory : Path = SMART_CONTRACT_BUILD_DIR,
+                   source_contracts_directory : Path = SMART_CONTRACT_SOURCE_DIR,
+                   manifest_written_file : Path = MANIFEST_BUILD_FILE):
     package_version = ask_package_version_from_user()
     package_name = package_version[0]
     version = package_version[1]
     meta = ask_meta_from_user()
-    sources = create_sources(package_name)
-    contract_types = create_contract_types()
+    sources = create_sources(package_name, source_contracts_directory)
+    contract_types = create_contract_types(build_contracts_directory)
+    manifest = create_manifest(contract_types, meta, package_name, sources, version)
+    json_string = dumps(manifest)
+    if not EPM_BUILD_DIR.exists():
+        EPM_BUILD_DIR.mkdir()
+    with open(manifest_written_file, "w") as f:
+        f.write(json_string)

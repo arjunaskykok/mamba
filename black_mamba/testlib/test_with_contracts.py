@@ -21,6 +21,7 @@ class TestWithContracts():
         self.json2_compiled_fixture = self.fixtures_dir / Path("HelloParameters.json")
         self.json2_compiled_file = self.build_contracts_dir / Path('HelloParameters.json')
         self.keyfile2_file = self.tmp_path / Path('keyfile2.json')
+        self.manifest_file = self.tmp_path / Path("manifest.json")
 
         if not self.build_dir.exists():
             self.build_dir.mkdir()
