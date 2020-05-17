@@ -1,6 +1,6 @@
 from json import dumps
 from pathlib import Path
-from typing import Dict
+from typing import Dict, Tuple
 
 from black_mamba.constants import SMART_CONTRACT_BUILD_DIR
 from black_mamba.contract.build_contract import BuildContract
@@ -31,6 +31,12 @@ def ask_meta_from_user() -> Dict:
             "website": website
         }
     }
+
+def ask_package_version_from_user() -> Tuple:
+    print("Please answer these questions for package and version!")
+    package = input("Package name: ")
+    version = input("Version: ")
+    return (package, version)
 
 def create_contract_types(build_contracts_directory : Path = SMART_CONTRACT_BUILD_DIR) -> Dict:
     contract_types_dict = {
