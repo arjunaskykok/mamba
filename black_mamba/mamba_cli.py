@@ -22,8 +22,8 @@ def parse_cli_args():
     keyfile_group.add_argument('--keyfile_private_key', action="store", default=False)
     keyfile_group.add_argument('--keyfile_password', action="store", default=False)
 
-    pm_group = parser.add_argument_group('pm')
-    pm_group.add_argument('--epm_mode', action="store", help="Mode of Ethereum package manager: install / list / uninstall", default="list")
+    pm_group = parser.add_argument_group('epm')
+    pm_group.add_argument('--epm_mode', action="store", help="Mode of Ethereum package manager: install / list / uninstall / create", default="list")
     pm_group.add_argument('--epm_uri', action="store", default=None)
     pm_group.add_argument('--epm_package', action="store", default=None)
 

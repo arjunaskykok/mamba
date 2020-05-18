@@ -102,7 +102,7 @@ def write_manifest(build_contracts_directory : Path = SMART_CONTRACT_BUILD_DIR,
     sources = create_sources(package_name, source_contracts_directory)
     contract_types = create_contract_types(build_contracts_directory)
     manifest = create_manifest(contract_types, meta, package_name, sources, version)
-    json_string = dumps(manifest)
+    json_string = dumps(manifest, sort_keys=True, separators=(",", ":"))
     if not EPM_BUILD_DIR.exists():
         EPM_BUILD_DIR.mkdir()
     with open(manifest_written_file, "w") as f:
