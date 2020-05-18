@@ -54,6 +54,11 @@ class TestPackageManager(TestWithContracts):
         factory = self.epm.load("Owned", "owned")
         assert factory.needs_bytecode_linking == False
 
+    def test_get_abi(self):
+        self._install()
+        abi = self.epm.get_abi("Owned", "owned")
+        assert abi[0]["stateMutability"] == "nonpayable"
+
     def _install(self):
         uri = "https://api.github.com/repos/ethereum/web3.py/git/blobs/a7232a93f1e9e75d606f6c1da18aa16037e03480"
         self.epm.install(uri)

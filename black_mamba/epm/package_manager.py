@@ -1,6 +1,7 @@
-from json import dumps
+from json import dumps, loads
 from pathlib import Path
 from shutil import rmtree
+from os import getcwd
 
 from typing import List
 
@@ -11,7 +12,7 @@ from black_mamba.epm.manifest import write_manifest
 
 class PackageManager:
 
-    def __init__(self, packages_dir: str):
+    def __init__(self, packages_dir: Path = Path(getcwd()) / Path("ethpm_packages")):
         """
         A package manager's purpose is to install, remove, list packages from chain or files.
         """
@@ -51,6 +52,7 @@ class PackageManager:
             package = Package.from_uri(uri, self.w3)
 
         self._write_manifests_to_filesystem(package.name, package.version, package.manifest)
+        self.package = package
 
     def list(self):
         """
@@ -80,10 +82,29 @@ class PackageManager:
 
         self._initialize_w3()
 
-        package = Package.from_file(manifest_path, self.w3)
-        factory = package.get_contract_factory(contract_factory)
+        self.package = Package.from_file(manifest_path, self.w3)
+        factory = self.package.get_contract_factory(contract_factory)
+
+        factory.web3 = self.w3
 
         return factory
+
+    def get_abi(self, contract_factory: str, package: Path, version: str = ""):
+        """
+        Get abi from the manifest file
+        """
+        package_path = self.packages_dir / Path(package)
+        versions = list(map(lambda p: p.name, package_path.iterdir()))
+        if not version:
+            version = self.find_max_version(versions)
+        manifest_path = package_path / Path(version) / Path("manifest.json")
+
+        with open(manifest_path) as f:
+            content = f.read()
+        manifest = loads(content)
+        abi = manifest["contract_types"][contract_factory]["abi"]
+
+        return abi
 
     def _create_ethpm_packages_dir(self):
         if not self.packages_dir.exists():
