@@ -1,6 +1,15 @@
 Release Notes
 =============
 
+v0.4.0 (2020-05-18)
+-------------------
+
+Features
+~~~~~~~~
+
+- Add method to install, list, delete Ethereum packages
+- Add method to create a manifest file
+
 v0.3.5 (2020-05-08)
 -------------------
 
