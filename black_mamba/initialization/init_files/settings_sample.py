@@ -28,11 +28,14 @@ networks = {
 
     #"development": {
     #    "mode": "Infura",
-    #    "project_id": "FILL_IT_WITH_PROJECT_ID",
-    #    "api_secret": "FILL_IT_WITH_API_SECRET",
     #    "scheme": "https / wss",
     #    "endpoints": "mainnet / ropsten / goerly / rinkeby / kovan"
     #}
+}
+
+infura_settings = {
+    "project_id": "FILL_IT_WITH_PROJECT_ID",
+    "project_secret": "FILL_IT_WITH_PROJECT_SECRET",
 }
 
 auth = {

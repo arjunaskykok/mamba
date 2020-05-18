@@ -12,6 +12,11 @@ class Contract:
         import settings
         networks = settings.networks
 
+        infura_settings = settings.infura_settings
+        if infura_settings:
+            environ["WEB3_INFURA_PROJECT_ID"] = infura_settings["project_id"]
+            environ["WEB3_INFURA_API_SECRET"] = infura_settings["project_secret"]
+
         development_network = networks["development"]
         if development_network["mode"]=="HTTP":
             server = "http://" + development_network["host"] + ":" + str(development_network["port"])
@@ -23,8 +28,6 @@ class Contract:
             server = "ws://" + development_network["host"] + ":" + str(development_network["port"])
             self.w3 = Web3(Web3.WebsocketProvider(server))
         elif development_network["mode"]=="Infura":
-            environ["WEB3_INFURA_PROJECT_ID"] = str(development_network["project_id"])
-            environ["WEB3_INFURA_API_SECRET"] = str(development_network["api_secret"])
             environ["WEB3_INFURA_SCHEME"] = str(development_network["scheme"])
             if development_network["endpoints"] == "mainnet":
                 from web3.auto.infura.mainnet import w3

@@ -3,9 +3,10 @@ from os import environ
 
 networks = {
     "development": {
-        "mode": "Infura",
-        "scheme": "https",
-        "endpoints": "mainnet"
+        "mode": "HTTP",
+        "host": "localhost",
+        "port": 7545,
+        "network_id": "*"
     }
 }
 

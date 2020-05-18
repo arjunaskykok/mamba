@@ -19,7 +19,7 @@ class TestPackageManager(TestWithContracts):
         self.version_dir = self.parent_dir / "1.0.1"
         self.manifest_file = self.version_dir / "manifest.json"
         self.epm = PackageManager(self.packages_dir)
-        self.use_infura()
+        self.use_ganache()
 
     def test_install(self):
         self._install()
@@ -45,14 +45,27 @@ class TestPackageManager(TestWithContracts):
         self.epm.uninstall("owned")
         assert self.parent_dir.exists() == False
 
+    def test_find_max_version(self):
+        max_result = self.epm.find_max_version(["1.2.3", "3.2.11", "3.2.7", "2.0.0"])
+        assert max_result == "3.2.11"
+
+    def test_load(self):
+        self._install()
+        factory = self.epm.load("Owned", "owned")
+        assert factory.needs_bytecode_linking == False
+
     def _install(self):
         uri = "https://api.github.com/repos/ethereum/web3.py/git/blobs/a7232a93f1e9e75d606f6c1da18aa16037e03480"
         self.epm.install(uri)
 
-    def use_infura(self):
-        copy(self.fixtures_dir / Path("infura_settings.py"), Path("settings.py"))
+    def _install2(self):
+        uri = "ethpm://zeppelin.snakecharmers.eth:1/math@1.0.0"
+        self.epm.install(uri)
 
-    def remove_infura_settings(self):
+    def use_ganache(self):
+        copy(self.fixtures_dir / Path("ganache_settings.py"), Path("settings.py"))
+
+    def remove_settings(self):
         if Path("settings.py").exists():
             Path("settings.py").unlink()
 
@@ -66,4 +79,4 @@ class TestPackageManager(TestWithContracts):
             self.parent_dir.rmdir()
         if self.packages_dir.exists():
             self.packages_dir.rmdir()
-        self.remove_infura_settings()
+        self.remove_settings()

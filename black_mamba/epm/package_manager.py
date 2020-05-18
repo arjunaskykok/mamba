@@ -2,6 +2,8 @@ from json import dumps
 from pathlib import Path
 from shutil import rmtree
 
+from typing import List
+
 from ethpm import Package
 from black_mamba.contract.contract import Contract
 from black_mamba.epm.manifest import write_manifest
@@ -14,6 +16,7 @@ class PackageManager:
         A package manager's purpose is to install, remove, list packages from chain or files.
         """
         self.packages_dir = packages_dir
+        self.w3 = None
 
     def operate(self, mode: str, uri: str, package: str):
         """
@@ -34,9 +37,7 @@ class PackageManager:
         Install packages from chain or files and put it in packages directory.
         """
         self._create_ethpm_packages_dir()
-
-        contract_instance = Contract()
-        w3 = contract_instance.w3
+        self._initialize_w3()
 
         is_file = True
         for prefix in ("ipfs://", "https://", "ethpm://", "erc1319://"):
@@ -45,9 +46,9 @@ class PackageManager:
                 break
 
         if is_file:
-            package = Package.from_file(Path(uri), w3)
+            package = Package.from_file(Path(uri), self.w3)
         else:
-            package = Package.from_uri(uri, w3)
+            package = Package.from_uri(uri, self.w3)
 
         self._write_manifests_to_filesystem(package.name, package.version, package.manifest)
 
@@ -67,6 +68,23 @@ class PackageManager:
                 rmtree(package_dir)
                 print(f"Deleted {package_delete}")
 
+    def load(self, contract_factory: str, package: Path, version: str = ""):
+        """
+        Load an installed package.
+        """
+        package_path = self.packages_dir / Path(package)
+        versions = list(map(lambda p: p.name, package_path.iterdir()))
+        if not version:
+            version = self.find_max_version(versions)
+        manifest_path = package_path / Path(version) / Path("manifest.json")
+
+        self._initialize_w3()
+
+        package = Package.from_file(manifest_path, self.w3)
+        factory = package.get_contract_factory(contract_factory)
+
+        return factory
+
     def _create_ethpm_packages_dir(self):
         if not self.packages_dir.exists():
             self.packages_dir.mkdir()
@@ -78,7 +96,46 @@ class PackageManager:
         version_dir = package_dir / Path(version)
         if not version_dir.exists():
             version_dir.mkdir()
-        manifest_content = dumps(manifest)
+        manifest_content = dumps(manifest, sort_keys=True, separators=(",", ":"))
         manifest_file = version_dir / Path("manifest.json")
         with open(manifest_file, "w") as f:
             f.write(manifest_content)
+
+    def _initialize_w3(self):
+        contract_instance = Contract()
+        self.w3 = contract_instance.w3
+
+    def find_max_version(self, versions: List) -> str:
+        """
+        Given ["1.2.3", "3.2.11", "3.2.7", "2.0.0"], this method would return "3.2.11"
+        """
+        maximum = None
+
+        def conv_to_int_arr(v):
+            return list(map(lambda x: int(x), v.split(".")))
+
+        if len(versions) == 0:
+            return ""
+
+        for version in versions:
+            int_version = conv_to_int_arr(version)
+
+            if len(int_version) == 1:
+                int_version = [int_version[0], 0, 0]
+            elif len(int_version) == 2:
+                int_version = [int_version[0], int_version[1], 0]
+
+            if maximum == None:
+                maximum = int_version
+            else:
+                if maximum[0] > int_version[0]:
+                    continue
+                elif maximum[1] > int_version[1]:
+                    continue
+                elif maximum[2] > int_version[2]:
+                    continue
+                else:
+                    maximum = int_version
+
+        max_version = ".".join(map(lambda x: str(x), maximum))
+        return max_version
