@@ -26,7 +26,8 @@ class PackageManager:
         elif mode=="uninstall":
             self.uninstall(package)
         elif mode=="create":
-            write_manifest()
+            pass
+            #write_manifest()
 
     def install(self, uri: str):
         """
