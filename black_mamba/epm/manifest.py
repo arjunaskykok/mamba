@@ -1,6 +1,10 @@
 from json import dumps
 from pathlib import Path
 from typing import Dict, Tuple
+from sys import path
+from os import getcwd
+
+import ipfshttpclient
 
 from black_mamba.constants import (SMART_CONTRACT_BUILD_DIR,
                                    SMART_CONTRACT_SOURCE_DIR,
@@ -107,3 +111,14 @@ def write_manifest(build_contracts_directory : Path = SMART_CONTRACT_BUILD_DIR,
         EPM_BUILD_DIR.mkdir()
     with open(manifest_written_file, "w") as f:
         f.write(json_string)
+
+def pin_manifest(manifest_written_file : Path = MANIFEST_BUILD_FILE, settings_directory : Path = getcwd()):
+    path.append(settings_directory)
+    import settings
+    ipfs_address = settings.ipfs_settings["address"]
+
+    with ipfshttpclient.connect(ipfs_address) as client:
+        pinned_asset = client.add(manifest_written_file, recursive=False)
+        print(f"Pinned asset URI is {pinned_asset['Hash']}.")
+
+    return pinned_asset

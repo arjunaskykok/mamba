@@ -7,7 +7,7 @@ from typing import List
 
 from ethpm import Package
 from black_mamba.contract.contract import Contract
-from black_mamba.epm.manifest import write_manifest
+from black_mamba.epm.manifest import write_manifest, pin_manifest
 
 
 class PackageManager:
@@ -31,6 +31,8 @@ class PackageManager:
             self.uninstall(package)
         elif mode=="create":
             write_manifest()
+        elif mode=="pin":
+            pin_manifest()
 
     def install(self, uri: str):
         """

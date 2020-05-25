@@ -1,5 +1,5 @@
 from pathlib import Path
-from shutil import rmtree
+from shutil import rmtree, copy
 
 
 class TestWithContracts():
@@ -21,7 +21,8 @@ class TestWithContracts():
         self.json2_compiled_fixture = self.fixtures_dir / Path("HelloParameters.json")
         self.json2_compiled_file = self.build_contracts_dir / Path('HelloParameters.json')
         self.keyfile2_file = self.tmp_path / Path('keyfile2.json')
-        self.manifest_file = self.tmp_path / Path("manifest.json")
+        self.ethpm_build_dir = self.tmp_path / Path("ethpm_build")
+        self.manifest_file = self.ethpm_build_dir / Path("manifest.json")
 
         if not self.build_dir.exists():
             self.build_dir.mkdir()
@@ -31,6 +32,13 @@ class TestWithContracts():
             self.migrations_dir.mkdir()
         if not self.decentralized_app_dir.exists():
             self.decentralized_app_dir.mkdir()
+        if not self.ethpm_build_dir.exists():
+            self.ethpm_build_dir.mkdir()
+
+        copy(self.fixtures_dir / Path("ganache_settings.py"), Path("settings.py"))
 
     def teardown_method(self, method):
         rmtree(self.tmp_path)
+
+        if Path("settings.py").exists():
+            Path("settings.py").unlink()

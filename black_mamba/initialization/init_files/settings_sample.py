@@ -33,6 +33,13 @@ networks = {
     #}
 }
 
+ipfs_settings = {
+    # Choose one
+    "address": "https://ipfs.io/ipfs/",                # IPFS Gateway
+    "address": "/dns4/ipfs.infura.io/tcp/5001/https/", # Infura
+    "address": "/ip4/127.0.0.1/tcp/5001"               # Local IPFS node
+}
+
 infura_settings = {
     "project_id": "FILL_IT_WITH_PROJECT_ID",
     "project_secret": "FILL_IT_WITH_PROJECT_SECRET",

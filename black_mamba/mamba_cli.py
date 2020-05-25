@@ -22,10 +22,17 @@ def parse_cli_args():
     keyfile_group.add_argument('--keyfile_private_key', action="store", default=False)
     keyfile_group.add_argument('--keyfile_password', action="store", default=False)
 
-    pm_group = parser.add_argument_group('epm')
-    pm_group.add_argument('--epm_mode', action="store", help="Mode of Ethereum package manager: install / list / uninstall / create", default="list")
-    pm_group.add_argument('--epm_uri', action="store", default=None)
-    pm_group.add_argument('--epm_package', action="store", default=None)
+    epm_group = parser.add_argument_group('epm')
+    epm_help = """Mode of Ethereum package manager: install / list / uninstall / create.
+    "install" -> Install package from GitHub or registry.
+    "list" -> List all installed packages.
+    "uninstall" -> Uninstall package.
+    "create" -> Create a package manifest from the source code, ABI, and bytecode of the smart contract.
+    "pin" -> Pin the package manifest to IPFS.
+    """
+    epm_group.add_argument('--epm_mode', action="store", help=epm_help, default="list")
+    epm_group.add_argument('--epm_uri', action="store", default=None)
+    epm_group.add_argument('--epm_package', action="store", default=None)
 
     arguments = parser.parse_args()
 

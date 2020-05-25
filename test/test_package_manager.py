@@ -1,5 +1,4 @@
 from pathlib import Path
-from shutil import copy
 from contextlib import redirect_stdout
 import io
 
@@ -19,7 +18,6 @@ class TestPackageManager(TestWithContracts):
         self.version_dir = self.parent_dir / "1.0.1"
         self.manifest_file = self.version_dir / "manifest.json"
         self.epm = PackageManager(self.packages_dir)
-        self.use_ganache()
 
     def test_install(self):
         self._install()
@@ -67,13 +65,6 @@ class TestPackageManager(TestWithContracts):
         uri = "ethpm://zeppelin.snakecharmers.eth:1/math@1.0.0"
         self.epm.install(uri)
 
-    def use_ganache(self):
-        copy(self.fixtures_dir / Path("ganache_settings.py"), Path("settings.py"))
-
-    def remove_settings(self):
-        if Path("settings.py").exists():
-            Path("settings.py").unlink()
-
     def teardown_method(self, method):
         super().teardown_method(method)
         if self.manifest_file.exists():
@@ -84,4 +75,3 @@ class TestPackageManager(TestWithContracts):
             self.parent_dir.rmdir()
         if self.packages_dir.exists():
             self.packages_dir.rmdir()
-        self.remove_settings()

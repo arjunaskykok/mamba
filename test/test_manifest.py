@@ -1,5 +1,7 @@
 from shutil import copy
 from json import loads
+from contextlib import redirect_stdout
+from io import StringIO
 
 from black_mamba.testlib.test_with_contracts import TestWithContracts
 from black_mamba.epm.manifest import (ask_meta_from_user,
@@ -7,7 +9,8 @@ from black_mamba.epm.manifest import (ask_meta_from_user,
                                       ask_package_version_from_user,
                                       create_sources,
                                       create_manifest,
-                                      write_manifest)
+                                      write_manifest,
+                                      pin_manifest)
 
 
 class TestAuth(TestWithContracts):
@@ -91,6 +94,21 @@ class TestAuth(TestWithContracts):
         assert "./vyper/HelloWorld.vy" in manifest_dict["sources"].keys()
         assert manifest_dict["contract_types"]["HelloWorld"]["compiler"]["name"] == "vyper"
 
+    def test_pin_manifest(self):
+        self._copy_manifest()
+
+        f = StringIO()
+        with redirect_stdout(f):
+            result = pin_manifest(self.manifest_file)
+
+        output = f.getvalue()
+        f.close()
+
+        assert result["Hash"] == "QmYJ15HBQQvTveicCXmYikfGYZjcQkgrJWvZ1YUbvt7K14"
+        assert result["Name"] == "manifest.json"
+        assert result["Size"] == "756"
+        assert output == f"Pinned asset URI is {result['Hash']}.\n"
+
     def _copy_helloworld_vy(self):
         if not self.contracts_dir.exists():
             self.contracts_dir.mkdir()
@@ -100,3 +118,8 @@ class TestAuth(TestWithContracts):
         if not self.build_contracts_dir.exists():
             self.build_contracts_dir.mkdir()
         copy(self.fixtures_dir / "HelloWorld.json", self.build_contracts_dir / "HelloWorld.json")
+
+    def _copy_manifest(self):
+        if not self.ethpm_build_dir.exists():
+            self.ethpm_build_dir.mkdir()
+        copy(self.fixtures_dir / "manifest.json", self.ethpm_build_dir / "manifest.json")
