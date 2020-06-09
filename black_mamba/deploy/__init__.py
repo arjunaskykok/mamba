@@ -23,7 +23,7 @@ class HexJsonEncoder(JSONEncoder):
 class DeployContract(Contract):
 
     def __init__(self, settings_directory : Path = getcwd()):
-        super(settings_directory)
+        super().__init__(settings_directory)
 
     def contract(self,
                  smart_contract_name : str,
