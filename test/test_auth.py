@@ -10,6 +10,8 @@ import pytest
 class TestAuth(TestWithContracts):
 
     expected_private_key = "0bf89b27648bd7fb6ed5478a9865a05968f14b3644153adaa7d603f755a436f5"
+    expected_private_key_mnemonic = "aba0a55ccb517ad219ee2f7f5d60b39379dcffbf6c6c9063830a15813a87e649"
+    mnemonic = "coral allow abandon recipe top tray caught video climb similar prepare bracket antenna rubber announce gauge volume hub hood burden skill immense add acid"
     password = "password123"
 
     def test_get_private_key_from_keyfile_by_explicit_password(self):
@@ -43,3 +45,7 @@ class TestAuth(TestWithContracts):
         Authentication.decrypt_keyfile(str(keyfile_path), self.password)
         assert temp_out.getvalue().rstrip() == self.expected_private_key
         sys.stdout = sys.__stdout__
+
+    def test_get_private_key_from_mnemonic(self):
+        private_key = Authentication.get_private_key_from_mnemonic(self.mnemonic)
+        assert private_key == self.expected_private_key_mnemonic

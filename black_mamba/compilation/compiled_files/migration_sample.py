@@ -13,7 +13,10 @@ development_auth = auth["development"]
 keyfile = development_auth["keyfile"]
 password = development_auth["password"]
 
-private_key = Authentication.get_private_key_from_keyfile_by_explicit_password(keyfile, password)
+mnemonic = "coral allow abandon recipe top tray caught video climb similar prepare bracket antenna rubber announce gauge volume hub hood burden skill immense add acid"
+private_key = Authentication.get_private_key_from_mnemonic(mnemonic)
+
+# private_key = Authentication.get_private_key_from_keyfile_by_explicit_password(keyfile, password)
 # private_key = Authentication.get_private_key_from_keyfile_by_asking_password(keyfile)
 # private_key = development_auth["private_key"]
 

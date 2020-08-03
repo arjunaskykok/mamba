@@ -5,6 +5,7 @@ from black_mamba.initialization.init import initialize_project_directory
 from black_mamba.compilation.vyper_compiler import compile_all_files
 from black_mamba.server.geth_dev_server import run_server
 from black_mamba.auth import Authentication
+from black_mamba.mnemonic import Mnemonic
 from black_mamba.epm.package_manager import PackageManager
 from black_mamba.constants import ETHEREUM_PACKAGES_DIR
 
@@ -34,6 +35,10 @@ def parse_cli_args():
     epm_group.add_argument('--epm_uri', action="store", default=None)
     epm_group.add_argument('--epm_package', action="store", default=None)
 
+    mnemonic_group = parser.add_argument_group('generate_mnemonic')
+    mnemonic_group.add_argument('--num_words', action="store", help="number of words in mnemonic (must be 12, 15, 18, 21, 24)", default=12)
+    mnemonic_group.add_argument('--language', action="store", help="language to use (must be english, czech, french, italian, japanese, korean, spanish, chinese_simplified, chinese_traditional)", default="english")
+
     arguments = parser.parse_args()
 
     if arguments.mode=="init":
@@ -50,6 +55,9 @@ def parse_cli_args():
     elif arguments.mode=="epm":
         epm = PackageManager(Path(ETHEREUM_PACKAGES_DIR))
         epm.operate(arguments.epm_mode, arguments.epm_uri, arguments.epm_package)
+    elif arguments.mode=="generate_mnemonic":
+        mnemonic = Mnemonic.generate_mnemonic(int(arguments.num_words), arguments.language)
+        print(mnemonic)
 
 
 if __name__ == "__main__":
