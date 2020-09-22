@@ -1,6 +1,14 @@
 Release Notes
 =============
 
+v0.5 (2020-09-23)
+-------------------
+
+Features
+~~~~~~~~
+
+- Add support for Ganache CLI for testing
+
 v0.4.1 (2020-05-25)
 -------------------
 

@@ -7,6 +7,7 @@ and testing decentralized applications using Web3.py and Pytest.
 ## Dependencies
 
 * [Ganache](https://www.trufflesuite.com/ganache)
+* [Ganache CLI](https://github.com/trufflesuite/ganache-cli)
 * [Pip](https://pypi.org/project/pip/)
 * [Python3](https://www.python.org/downloads/) version 3.6 or greater
 * [Go Ethereum](https://geth.ethereum.org/downloads/)

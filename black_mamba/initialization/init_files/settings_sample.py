@@ -52,3 +52,9 @@ auth = {
         "keyfile": "keyfile.json"
     }
 }
+
+ganache_cli = {
+    "development": {
+        "address": "http://127.0.0.1:8545"
+    }
+}
