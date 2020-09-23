@@ -11,7 +11,7 @@ RUN apt-get update && \
         libgmp-dev \
     && rm -rf /var/lib/apt/lists/*
 
-RUN pip install vyper==0.2.3 pytest==6.0.1 web3==5.12.0 eth-tester==0.5.0b1 py-evm==0.3.0a18 black-mamba==0.4.3 mypy==0.782 pytest-mock
+RUN pip install vyper==0.2.4 pytest==6.0.2 web3==5.12.1 eth-tester==0.5.0b2 py-evm==0.3.0a19 black-mamba==0.5.1 mypy pytest-mock
 
 RUN mkdir code
 
