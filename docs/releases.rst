@@ -1,8 +1,24 @@
 Release Notes
 =============
 
-v0.5 (2020-09-23)
+v0.5.2 (2020-09-25)
 -------------------
+
+Bug Fixes
+~~~~~~~~~
+
+- Fix EthereumTesterProvider bug when accessing the balance of the accounts
+
+v0.5.1 (2020-09-24)
+-------------------
+
+Features
+~~~~~~~~
+
+- Update Vyper to 0.2.4
+
+v0.5 (2020-09-23)
+-----------------
 
 Features
 ~~~~~~~~
