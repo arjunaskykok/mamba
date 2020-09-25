@@ -1,5 +1,6 @@
 from argparse import ArgumentParser
 from pathlib import Path
+from subprocess import run
 
 from black_mamba.initialization.init import initialize_project_directory
 from black_mamba.compilation.vyper_compiler import compile_all_files
@@ -39,6 +40,9 @@ def parse_cli_args():
     mnemonic_group.add_argument('--num_words', action="store", help="number of words in mnemonic (must be 12, 15, 18, 21, 24)", default=12)
     mnemonic_group.add_argument('--language', action="store", help="language to use (must be english, czech, french, italian, japanese, korean, spanish, chinese_simplified, chinese_traditional)", default="english")
 
+    test_group = parser.add_argument_group('test')
+    test_group.add_argument('--file', action="store", default=None)
+
     arguments = parser.parse_args()
 
     if arguments.mode=="init":
@@ -58,6 +62,9 @@ def parse_cli_args():
     elif arguments.mode=="generate_mnemonic":
         mnemonic = Mnemonic.generate_mnemonic(int(arguments.num_words), arguments.language)
         print(mnemonic)
+    elif arguments.mode=="test":
+        pytest_args = arguments.file.split(" ")
+        run(["py.test", *pytest_args])
 
 
 if __name__ == "__main__":

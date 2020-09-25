@@ -8,6 +8,7 @@ Bug Fixes
 ~~~~~~~~~
 
 - Fix EthereumTesterProvider bug when accessing the balance of the accounts
+- Add flag for Mamba CLI to execute test with Pytest
 
 v0.5.1 (2020-09-24)
 -------------------
