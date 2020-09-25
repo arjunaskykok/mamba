@@ -10,9 +10,12 @@ from web3 import (
 )
 
 
+esp = EthereumTesterProvider()
+
+
 @pytest.fixture
 def eth_tester():
-    return EthereumTesterProvider().ethereum_tester
+    return esp.ethereum_tester
 
 @pytest.fixture
 def w3():
@@ -43,8 +46,10 @@ def get_w3():
         w3 = Web3(Web3.HTTPProvider(address))
         if w3.isConnected():
             return w3
+        else:
+            return Web3(esp)
     except AttributeError:
-        return Web3(EthereumTesterProvider())
+        return Web3(esp)
 
 
 class TestContract:
@@ -55,4 +60,8 @@ class TestContract:
 
     def teardown_method(self, method):
         w3 = get_w3()
-        w3.testing.revert(1)
+        try:
+            w3.provider.ethereum_tester
+            w3.testing.revert(0)
+        except AttributeError:
+            w3.testing.revert(1)
