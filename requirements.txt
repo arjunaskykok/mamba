@@ -1,6 +1,6 @@
+py-evm==0.3.0a19
 vyper==0.2.7
 pytest==6.0.2
 web3==5.12.2
 eth-tester==0.5.0b2
-py-evm==0.3.0a19
 pytest-mock

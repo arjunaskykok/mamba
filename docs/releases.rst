@@ -1,6 +1,15 @@
 Release Notes
 =============
 
+v0.5.4 (2020-10-22)
+-------------------
+
+Updates
+~~~~~~~
+
+- Update Vyper to 0.2.7
+- Put py-evm on top for dependencies issue
+
 v0.5.2 (2020-09-25)
 -------------------
 
