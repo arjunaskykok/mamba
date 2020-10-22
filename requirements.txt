@@ -1,6 +1,6 @@
-py-evm==0.3.0a19
+py-evm==0.3.0a20
 vyper==0.2.7
 pytest==6.0.2
 web3==5.12.2
-eth-tester==0.5.0b2
+git+git://github.com/ethereum/eth-tester@c12172cf3191eda2c57a1f3b80569448ca52796f#egg=eth-tester
 pytest-mock
