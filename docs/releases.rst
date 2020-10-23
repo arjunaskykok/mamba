@@ -8,6 +8,7 @@ Updates
 ~~~~~~~
 
 - Update py-evm to 0.3.0a20
+- Remove eth-tester as dependency for now
 
 v0.5.4 (2020-10-22)
 -------------------

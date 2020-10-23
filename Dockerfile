@@ -11,7 +11,7 @@ RUN apt-get update && \
         libgmp-dev \
     && rm -rf /var/lib/apt/lists/*
 
-RUN pip install py-evm==0.3.0a20 vyper==0.2.7 pytest==6.0.2 web3==5.12.2 black-mamba==0.5.5 pytest-mock git+git://github.com/ethereum/eth-tester.git
+RUN pip install py-evm==0.3.0a20 vyper==0.2.7 pytest==6.0.2 web3==5.12.2 black-mamba==0.5.5 pytest-mock git+git://github.com/ethereum/eth-tester.git@c12172cf3191eda2c57a1f3b80569448ca52796f
 
 RUN mkdir code
 
