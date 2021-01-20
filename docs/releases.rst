@@ -1,6 +1,18 @@
 Release Notes
 =============
 
+v0.5.6 (2021-01-20)
+-------------------
+
+Updates
+~~~~~~~
+
+- Update vyper to 0.2.8
+- Update pytest to 6.2.1
+- Update web3 to 5.15.0
+- Update pytest-mock to 3.5.1
+- Update eth-tester to 0.5.0b3
+
 v0.5.5 (2020-10-23)
 -------------------
 
