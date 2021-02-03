@@ -1,6 +1,14 @@
 Release Notes
 =============
 
+v0.5.7 (2021-02-03)
+-------------------
+
+Features
+~~~~~~~~
+
+- Add Accounts and Tokens methods for Etherscan
+
 v0.5.6 (2021-01-20)
 -------------------
 
