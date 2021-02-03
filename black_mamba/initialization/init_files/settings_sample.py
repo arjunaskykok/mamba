@@ -58,3 +58,9 @@ ganache_cli = {
         "address": "http://127.0.0.1:8545"
     }
 }
+
+etherscan = {
+    "development": {
+        "api_key": "ETHERSCAN_API_KEY"
+    }
+}
