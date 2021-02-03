@@ -1,6 +1,14 @@
 Release Notes
 =============
 
+v0.5.8 (2021-02-03)
+-------------------
+
+Features
+~~~~~~~~
+
+- Move methods in tokens.py file to accounts.py file
+
 v0.5.7 (2021-02-03)
 -------------------
 
