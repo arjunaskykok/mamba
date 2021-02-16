@@ -1,7 +1,7 @@
 # Mamba
 
 Mamba is a framework to write, compile, and deploy smart contracts
-written in Vyper language. On top of that, it has supports for writing
+written in Vyper language and Solidity language. On top of that, it has supports for writing
 and testing decentralized applications using Web3.py and Pytest.
 
 ## Dependencies
@@ -12,6 +12,7 @@ and testing decentralized applications using Web3.py and Pytest.
 * [Python3](https://www.python.org/downloads/) version 3.6 or greater
 * [Go Ethereum](https://geth.ethereum.org/downloads/)
 * [Vyper](https://github.com/ethereum/vyper)
+* [Solity](https://soliditylang.org)
 
 ## Installation
 
@@ -20,6 +21,8 @@ You can install the latest release via ``pip``:
 ```bash
 $ pip install black-mamba
 ```
+
+To use Solidity, you must install ``solc`` compiler separately.
 
 ## Quick Usage
 
