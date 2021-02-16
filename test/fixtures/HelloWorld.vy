@@ -4,14 +4,14 @@
 @notice You can use this contract for greeting
 @dev Greetings must be done in a polite way
 """
-greeting: bytes[20]
+greeting: String[20]
 
-@public
+@external
 def __init__():
     self.greeting = "Hello World"
 
-@public
-def setGreeting(x: bytes[20]):
+@external
+def setGreeting(x: String[20]):
     """
     @notice Set the greeting
     @dev Set the greeting no less than 20 bytes
@@ -19,8 +19,8 @@ def setGreeting(x: bytes[20]):
     """
     self.greeting = x
 
-@public
-def greet() -> bytes[20]:
+@external
+def greet() -> String[20]:
     """
     @notice Return the greeting
     @dev Return the greeting which is 20 bytes

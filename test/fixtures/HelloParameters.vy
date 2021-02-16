@@ -1,15 +1,15 @@
-greeting: bytes[20]
+greeting: String[20]
 index: uint256
 
-@public
-def __init__(_greeting: bytes[20], _number: uint256):
+@external
+def __init__(_greeting: String[20], _number: uint256):
     self.greeting = _greeting
     self.index = _number
 
-@public
-def greet() -> bytes[20]:
+@external
+def greet() -> String[20]:
     return self.greeting
 
-@public
+@external
 def get_index() -> uint256:
     return self.index

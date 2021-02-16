@@ -1,5 +1,6 @@
 from pathlib import Path
-from json import dump
+from json import dump, loads
+import subprocess
 from vyper import compile_codes, __version__ as version
 
 
@@ -40,3 +41,43 @@ def compile_all_files(source_code_directory: Path, build_directory: Path, migrat
                 migration_sample_content = migration_sample.read_text()
                 content = migration_sample_content.format(smart_contract_name=smart_contract_name)
                 file.write(content)
+
+    solidity_files = source_code_directory.glob("*.sol")
+    for solidity_file in solidity_files:
+        with open(solidity_file, 'r') as f:
+            build_dir_str = str(build_directory)
+            smart_contract_name = Path(solidity_file).with_suffix('').name
+            option_str = "abi,asm,ast,bin,bin-runtime,compact-format,devdoc,generated-sources,generated-sources-runtime,hashes,interface,metadata,opcodes,srcmap,srcmap-runtime,storage-layout,userdoc"
+            try:
+                p = subprocess.Popen(["solc", "--combined-json", option_str, solidity_file], stdout=subprocess.PIPE)
+                out, err = p.communicate()
+                out_str = out.decode()
+                output_json = loads(out_str)
+                for contract in output_json["contracts"]:
+                    contract_compilation = output_json["contracts"][contract]
+                    compiler_version = output_json["version"]
+                    smart_contract_name = contract.split(":")[1]
+                    smart_contract_json = {
+                        "contractName": smart_contract_name,
+                        "compiler": { "name": "solidity",
+                                      "version": compiler_version
+                                    }
+                    }
+                    for format in contract_compilation:
+                        smart_contract_json[format] = contract_compilation[format]
+
+                    contract_json_file = build_dir_str + '/' + smart_contract_name + '.json'
+                    with open(contract_json_file, 'w') as smart_contract_build_file:
+                        dump(smart_contract_json, smart_contract_build_file, indent=4)
+
+                    migration_sample = Path(__file__).parent / Path("compiled_files") / Path("migration_sample.py")
+                    prefix_deploy_file = "deploy_"
+                    migration_file_name = f"{prefix_deploy_file}{smart_contract_name}.py"
+                    migration_file = migration_directory / Path(migration_file_name)
+                    with open(migration_file, "w") as file:
+                        migration_sample_content = migration_sample.read_text()
+                        content = migration_sample_content.format(smart_contract_name=smart_contract_name)
+                        file.write(content)
+
+            except FileNotFoundError:
+                print("You must install Solidity compiler first.")
