@@ -32,7 +32,10 @@ class DeployContract(Contract):
 
         with open(contract_json_file, "r") as smart_contract_build_file:
             json_object = load(smart_contract_build_file)
-            bytecode = json_object["bytecode"]
+            if json_object["compiler"]["name"] == "solidity":
+                bytecode = json_object["bin"]
+            else:
+                bytecode = json_object["bytecode"]
             abi = json_object["abi"]
             smart_contract = self.w3.eth.contract(abi=abi, bytecode=bytecode)
             return smart_contract
