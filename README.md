@@ -12,7 +12,7 @@ and testing decentralized applications using Web3.py and Pytest.
 * [Python3](https://www.python.org/downloads/) version 3.6 or greater
 * [Go Ethereum](https://geth.ethereum.org/downloads/)
 * [Vyper](https://github.com/ethereum/vyper)
-* [Solity](https://soliditylang.org)
+* [Solidity](https://soliditylang.org)
 
 ## Installation
 
