@@ -47,6 +47,7 @@ def get_w3():
         if w3.isConnected():
             return w3
         else:
+            esp = EthereumTesterProvider()
             return Web3(esp)
     except AttributeError:
         return Web3(esp)
@@ -56,12 +57,14 @@ class TestContract:
 
     def setup_method(self, method):
         w3 = get_w3()
-        w3.testing.snapshot()
+        try:
+            w3.provider.ethereum_tester
+        except AttributeError:
+            w3.testing.snapshot()
 
     def teardown_method(self, method):
         w3 = get_w3()
         try:
             w3.provider.ethereum_tester
-            w3.testing.revert(0)
         except AttributeError:
             w3.testing.revert(1)
