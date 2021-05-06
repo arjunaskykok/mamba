@@ -1,6 +1,15 @@
 Release Notes
 =============
 
+v0.6.2 (2021-05-06)
+-------------------
+
+Features
+~~~~~~~~
+
+- Update Vyper, Web3.py, PyEVM, eth-tester version
+- Use new EthereumTesterProvider for every test method
+
 v0.6 (2021-02-16)
 -------------------
 
