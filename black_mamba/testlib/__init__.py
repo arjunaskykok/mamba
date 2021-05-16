@@ -27,7 +27,6 @@ def contract(smart_contract_name, parameters=[], contract_directory=Path('.')):
 
     with open(contract_json_file, 'r') as smart_contract_build_file:
         json_object = load(smart_contract_build_file)
-        bytecode = json_object["bytecode"]
         if json_object["compiler"]["name"] == "solidity":
             bytecode = json_object["bin"]
         else:
