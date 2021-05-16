@@ -1,6 +1,14 @@
 Release Notes
 =============
 
+v0.6.3 (2021-05-16)
+-------------------
+
+Bug Fixes
+~~~~~~~~~
+
+- Fix bug when testing Solidity contract
+
 v0.6.2 (2021-05-06)
 -------------------
 
