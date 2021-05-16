@@ -10,8 +10,16 @@ Features
 - Update Vyper, Web3.py, PyEVM, eth-tester version
 - Use new EthereumTesterProvider for every test method
 
-v0.6 (2021-02-16)
+v0.6.1 (2021-02-17)
 -------------------
+
+Features
+~~~~~~~~
+
+- Add Solidity support for deploying smart contracts
+
+v0.6 (2021-02-16)
+-----------------
 
 Features
 ~~~~~~~~
